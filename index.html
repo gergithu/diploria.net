@@ -22,15 +22,36 @@
       position: relative;
       overflow: hidden;
       text-align: center;
-      opacity: 0; /* Start hidden for fade-in */
+      opacity: 0;
       animation: fadeIn 2s ease-in forwards;
     }
 
-    /* Coral background animation: start small -> full page */
+    /* Navigation Bar */
+    nav {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-weight: 500;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Coral Background Animation */
     body::before {
       content: "";
       background: url('brain-coral.jpeg') no-repeat center center;
-      background-size: 40%; /* Start at current smaller size */
+      background-size: 40%;
       opacity: 0.15;
       position: absolute;
       top: 0;
@@ -54,19 +75,15 @@
       margin: 0;
     }
 
-    /* Fade-in page */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    /* Zoom background from small to full */
     @keyframes zoomToFull {
       from { background-size: 40%; }
-      to { background-size: cover; } /* cover = full page */
+      to { background-size: cover; }
     }
 
-    /* Ensure mobile scaling works */
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
       p { font-size: 1.1rem; }
@@ -74,6 +91,13 @@
   </style>
 </head>
 <body>
+  <!-- Navigation Links -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <!-- Page Content -->
   <h1>Diploria.net</h1>
   <p>Coming Soon</p>
 </body>
