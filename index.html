@@ -71,10 +71,29 @@
     .content p {
       font-size: 1.5rem;
     }
-  </style>
+/* Background coral image */
+.coral-background::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("images/brain-coral.jpeg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+    animation: coralFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes coralFloat {
+    0%   { transform: translateY(8px) scale(1); }
+    100% { transform: translateY(-8px) scale(1.02); }
+}    
+</style>
 </head>
-<body>
-  <div class="background"></div>
+
+<body class="coral-background">
 
  <nav>
   <a href="index.html">Home</a>
@@ -84,6 +103,6 @@
 
   <div class="content">
     <p><a href="/about.html">EXPLORE</a></p>
-  </div>
+</div>
 </body>
 </html>
