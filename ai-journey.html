@@ -107,15 +107,10 @@
     0%   { transform: translateY(8px) scale(1); }
     100% { transform: translateY(-8px) scale(1.02); }
 }        
-  /* Prevent headings from sliding under the fixed top menu */
-#introduction,
-#project,
-#domains,
-#ai-toolkit,
-#results,
-#future {
-    scroll-margin-top: 110px; /* Increase if still hidden, decrease if too much gap */
-} 
+/* Global fix: any anchor target with an id stops below the fixed top menu */
+[id] {
+    scroll-margin-top: 110px;  /* tweak this number if needed */
+}
     </style>
 </head>
 <body class="antialiased coral-background">
