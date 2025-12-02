@@ -2,107 +2,381 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diploria.net</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    html, body {
+    :root {
+      --bg: #020617;
+      --bg-accent: #020b18;
+      --primary: #4fa3d1;
+      --primary-soft: rgba(79, 163, 209, 0.65);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --card-bg: rgba(15, 23, 42, 0.8);
+      --border-subtle: rgba(148, 163, 184, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
     }
 
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('brain-coral.jpeg') no-repeat center center;
-      background-size: 120%;
-      opacity: 0.2;
-      animation: zoomFade 6s ease-out forwards;
-      z-index: -1;
-    }
-
-    @keyframes zoomFade {
-      0% {
-        transform: scale(1);
-        opacity: 0.1;
-      }
-      100% {
-        transform: scale(1.2);
-        opacity: 0.2;
-      }
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 0.75rem;
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text-main);
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      z-index: 10;
+      flex-direction: column;
     }
 
-    nav a {
+    a {
+      color: inherit;
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 1rem;
     }
 
-    .content {
+    /* Simple top nav */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.92),
+        rgba(2, 6, 23, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
       position: relative;
-      top: 30%;
+      color: var(--text-muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 1px;
+      background: var(--primary);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main hero */
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    .hero {
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text h1 span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-copy {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-copy strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .cta-row {
+        justify-content: center;
+      }
+    }
+
+    /* Polyp CTA button */
+
+    .btn-polyp {
+      border-radius: 999px;
+      padding: 0.3rem;
+      background: radial-gradient(circle at 30% 0, #1e293b 0, #020617 65%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease-out,
+        box-shadow 0.15s ease-out,
+        border-color 0.15s ease-out,
+        background 0.15s ease-out;
+    }
+
+    .btn-polyp:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 24px rgba(79, 163, 209, 0.4);
+      border-color: var(--primary);
+      background: radial-gradient(circle at 30% 0, #0b1120 0, #020617 70%);
+    }
+
+    .polyp-icon {
+      width: 2.7rem;
+      height: 2.7rem;
+      display: block;
+    }
+
+    .cta-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 14rem;
+      line-height: 1.5;
+    }
+
+    .cta-label span {
+      color: var(--primary-soft);
+    }
+
+    /* Right-side card */
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: 1.4rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-card h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-card p strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    footer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
       text-align: center;
-      color: #111;
+      padding: 0.9rem 1rem 1.2rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at bottom, #020617 0, #000 70%);
     }
-
-    .content h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .content p {
-      font-size: 1.5rem;
-    }
-/* Background coral image */
-.coral-background::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("images/brain-coral.jpeg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: -1;
-    animation: coralFloat 20s ease-in-out infinite alternate;
-}
-
-@keyframes coralFloat {
-    0%   { transform: translateY(8px) scale(1); }
-    100% { transform: translateY(-8px) scale(1.02); }
-}    
-</style>
+  </style>
 </head>
 
-<body class="coral-background">
+<body>
+  <!-- Top Nav -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">DIPLORIA.NET</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ai-journey.html">AI Journey</a>
+      </nav>
+    </div>
+  </header>
 
- <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="ai-journey.html">AI Journey</a>
-</nav>
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-subtitle">Notes from the reef</div>
+        <h1>
+          Diploria – a slow, patient<br />
+          <span>laboratory for thinking</span>
+        </h1>
+        <p class="hero-copy">
+          This site traces a one–year experiment in pairing disciplined,
+          executive-style judgment with modern AI systems. What began as a
+          personal reef of notebooks, case files, and questions evolved into
+          a full <strong>AI-assisted legal case study</strong> and a broader
+          inquiry into how tools like ChatGPT, Claude, Perplexity, and Gemini
+          can extend a single person’s reach.
+        </p>
 
-  <div class="content">
-    <p><a href="/about.html">EXPLORE</a></p>
-</div>
+        <div class="cta-row">
+          <!-- Polyp CTA: replaces “EXPLORE” -->
+          <a href="ai-journey.html"
+             class="btn-polyp"
+             aria-label="Enter the reef – A Year of AI">
+            <!-- Inline 12-tentacle brain coral polyp SVG -->
+            <svg class="polyp-icon"
+                 xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 64 64"
+                 role="img"
+                 aria-hidden="true">
+              <!-- Soft marine outer ring -->
+              <circle cx="32" cy="32" r="22"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-opacity="0.25"
+                      stroke-width="2" />
+              <defs>
+                <radialGradient id="polyp-core-soft" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"  stop-color="#4fa3d1" stop-opacity="0.95" />
+                  <stop offset="55%" stop-color="#4fa3d1" stop-opacity="0.45" />
+                  <stop offset="100%" stop-color="#4fa3d1" stop-opacity="0.0" />
+                </radialGradient>
+              </defs>
+              <!-- Core glow -->
+              <circle cx="32" cy="32" r="8" fill="url(#polyp-core-soft)" />
+              <!-- 12 tentacles -->
+              <g transform="translate(32 32)"
+                 fill="white"
+                 fill-opacity="0.9"
+                 stroke="currentColor"
+                 stroke-width="1.4">
+                <path id="tentacle-soft"
+                      d="M0 -19
+                         C 4 -16, 5 -11, 3 -7
+                         C 1 -4, -1 -4, -3 -7
+                         C -5 -11, -4 -16, 0 -19 Z" />
+                <use href="#tentacle-soft" transform="rotate(30)" />
+                <use href="#tentacle-soft" transform="rotate(60)" />
+                <use href="#tentacle-soft" transform="rotate(90)" />
+                <use href="#tentacle-soft" transform="rotate(120)" />
+                <use href="#tentacle-soft" transform="rotate(150)" />
+                <use href="#tentacle-soft" transform="rotate(180)" />
+                <use href="#tentacle-soft" transform="rotate(210)" />
+                <use href="#tentacle-soft" transform="rotate(240)" />
+                <use href="#tentacle-soft" transform="rotate(270)" />
+                <use href="#tentacle-soft" transform="rotate(300)" />
+                <use href="#tentacle-soft" transform="rotate(330)" />
+              </g>
+            </svg>
+          </a>
+
+          <div class="cta-label">
+            <span>Polyp by polyp,</span> follow the one–year AI journey
+            from first prompt to full casework.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: context card -->
+      <aside class="hero-card">
+        <h2>A Year of AI</h2>
+        <p>
+          A structured, time-bound experiment: using AI to help dissect
+          disclosure, compare evidence, track timelines, and draft
+          professional communication in a real legal context.
+        </p>
+        <p>
+          The goal was not automation, but <strong>augmentation</strong>:
+          testing how far a single person, working methodically, could go by
+          pairing long experience with new tools.
+        </p>
+        <div class="hero-meta">
+          • One self-represented case<br />
+          • Multiple AI “engines” (polyps)<br />
+          • Outcome: a complete, defensible narrative
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    © Diploria.net – built polyp by polyp
+  </footer>
 </body>
 </html>
