@@ -353,7 +353,7 @@
             <section id="philosophy" class="section">
                 <div class="pill">Notes from the reef</div>
                 <div class="eyebrow">Welcome to Diploria</div>
-                <h1>Diploria – a patient AI laboratory for thinking</h1>
+                <h1>Diploria – an ecosystem for thinking</h1>
 
                 <p>Diploria is a living laboratory where ideas, data, and memories grow together much like a brain coral reef. The name comes from <em>Diploria labyrinthiformis</em>, a species whose skeleton is built cell by cell, polyp by polyp, over decades rather than a single generation.</p>
 
@@ -517,8 +517,8 @@
                     <p style="margin-top: 0.5rem;">Leveraged AI's objectivity to structure unstructured personal memories, transforming raw journal entries into coherent narrative chapters for a future memoir.</p>
                 </div>
                 <div class="card">
-                    <strong>Sensitive Family Dynamics</strong>
-                    <p style="margin-top: 0.5rem;">Utilized AI as a neutral third-party to analyze complex interpersonal dynamics and draft emotionally intelligent communications for difficult family situations.</p>
+                    <strong>Sensitive Social & Interpersonal Communications</strong>
+                    <p style="margin-top: 0.5rem;">Utilized AI as a neutral third-party to analyze complex interpersonal dynamics and draft emotionally intelligent communications for difficult, nuanced situations—whether with relatives, close friends, colleagues, or in politically or emotionally charged contexts.</p>
                 </div>
 
                 <div class="pill-nav-group">
@@ -683,10 +683,13 @@
                 updateDetails(stage.id);
                 document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
                 el.classList.add('active');
-                // Scroll the detail panel into view with offset for sticky header
+                // Scroll the detail panel into view with dynamic header offset
                 setTimeout(() => {
-                    detailsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    window.scrollBy(0, -120); // Offset for sticky header
+                    const header = document.querySelector('header');
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const detailsRect = detailsContainer.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset + detailsRect.top - headerHeight - 20;
+                    window.scrollTo({ top: scrollTop, behavior: 'smooth' });
                 }, 100);
             });
             stepsContainer.appendChild(el);
