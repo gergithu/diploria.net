@@ -248,35 +248,28 @@
 
         .metric-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
             margin: 2rem 0;
         }
 
         .metric-card {
             border: 1px solid var(--border);
-            padding: 2rem 1.5rem;
+            padding: 1.5rem;
             text-align: center;
             background: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 160px;
         }
 
         .metric-value {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: bold;
             color: var(--accent);
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
+            margin-bottom: 0.5rem;
         }
 
         .metric-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--muted);
-            line-height: 1.4;
         }
 
         .chart-container {
@@ -458,7 +451,6 @@
                 <div class="chart-container">
                     <canvas id="costChart"></canvas>
                 </div>
-                <p style="text-align: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.9rem;"><strong>Actual Cost:</strong> $360 AI subscription | <strong>Avoided Cost:</strong> $30,000–$60,000 in professional legal fees</p>
 
                 <h3>Core Learnings</h3>
                 <div class="grid-2">
@@ -667,10 +659,10 @@
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['AI Subscription Cost: $360', 'Avoided Professional Fees: $30K–60K'],
+                labels: ['Potential Professional Fees', 'Actual Fees Paid'],
                 datasets: [{
-                    data: [360, 45000],
-                    backgroundColor: ['#c96a3c', '#e1e1da'],
+                    data: [100, 0],
+                    backgroundColor: ['#e1e1da', '#c96a3c'],
                     borderColor: '#ffffff',
                     borderWidth: 3
                 }]
@@ -680,25 +672,7 @@
                 maintainAspectRatio: false,
                 cutout: '70%',
                 plugins: {
-                    legend: { 
-                        position: 'bottom', 
-                        labels: { 
-                            color: '#20201e',
-                            padding: 15,
-                            font: { size: 12 }
-                        } 
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                if (context.dataIndex === 0) {
-                                    return 'Actual Cost: $360';
-                                } else {
-                                    return 'Avoided Cost: $30K–60K';
-                                }
-                            }
-                        }
-                    }
+                    legend: { position: 'bottom', labels: { color: '#20201e' } }
                 }
             }
         });
