@@ -622,6 +622,11 @@
                 updateDetails(stage.id);
                 document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
                 el.classList.add('active');
+                // Scroll the detail panel into view with offset for sticky header
+                setTimeout(() => {
+                    detailsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.scrollBy(0, -120); // Offset for sticky header
+                }, 100);
             });
             stepsContainer.appendChild(el);
         });
