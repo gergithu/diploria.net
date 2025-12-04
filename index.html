@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diploria – A Laboratory for Thinking</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -72,13 +71,6 @@
             background: rgba(245, 245, 243, 0.94);
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(12px);
-        }
-
-        .brand {
-            font-size: 0.8rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            font-weight: 700;
         }
 
         .brand-icon {
@@ -223,29 +215,6 @@
             border-left-color: var(--accent);
         }
 
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .btn-tool {
-            border: 1px solid var(--border);
-            padding: 0.6rem 1.2rem;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
-        .btn-tool:hover, .btn-tool.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
         .metric-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
@@ -285,14 +254,6 @@
             max-width: 350px;
             margin: 2rem auto;
             height: 280px;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 2rem auto;
-            height: 300px;
         }
 
         footer {
@@ -366,21 +327,14 @@
                     </a>
                     <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">Tell me what you're trying to solve.</p>
                 </div>
-
-                <p>Diploria is a living laboratory where ideas, data, and memories grow together much like a coral reef—a miracle designed around countless organisms working in concert. The name comes from <em>Diploria labyrinthiformis</em>, a species whose skeleton is built cell by cell, polyp by polyp, over decades. I chose the genus name for brain coral deliberately: its contours mirror the mammalian cortex, and that resemblance triggers something essential about consciousness itself.</p>
-
-                <p>That slow, patient construction reminds me that true knowledge, like coral, accrues incrementally—each conversation, each experiment, each reflection adds a new "polyp" to the structure. This site documents a year-long experiment in pairing disciplined judgment with modern AI systems, exploring how these tools can extend individual capability.</p>
-
-                <div class="pill-nav-group">
-                    <a href="#metaphor" class="pill-nav">→ The Metaphor</a>
-                    <a href="#case-study" class="pill-nav">→ The Case Study</a>
-                </div>
             </section>
 
             <!-- METAPHOR & PARALLELS -->
             <section id="metaphor" class="section">
                 <div class="eyebrow">Architecture of Thought</div>
                 <h2>The Reef Metaphor in Practice</h2>
+
+                <p>Diploria is a living laboratory where ideas, data, and memories grow together much like a coral reef—a miracle designed around countless organisms working in concert. The name comes from <em>Diploria labyrinthiformis</em>, a species whose skeleton is built cell by cell, polyp by polyp, over decades. I chose the genus name for brain coral deliberately: its contours mirror the mammalian cortex, and that resemblance triggers something essential about consciousness itself.</p>
 
                 <h3>Polyps as thought units</h3>
                 <p>Every insight begins as a tiny polyp: a question, a legal clause, a financial model, or a cultural memory. Individually they seem modest, but as they multiply they secrete meaning, binding together into sturdy branches that support the whole organism.</p>
@@ -412,7 +366,7 @@
                 <p>After a multi-year career break, I needed to rebuild focus and skill. The emergence of Generative AI provided a unique opportunity to tackle a real-world, high-stakes challenge: independently managing a complex legal matter from start to finish.</p>
 
                 <h3>The Casework Engine</h3>
-                <p>This section details the core of the project. It was a hands-on, procedural journey through a confidential legal matter, using AI as the primary guide. Click on each stage to explore how technology was applied to solve complex tasks.</p>
+                <p>This section distills the core of the project: a year-long procedural journey guided by AI, proving the methodology works even under extreme pressure. Click on each stage to see how specific challenges were solved.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; margin: 2rem 0;">
                     <div id="process-steps-container" style="display: flex; flex-direction: column;"></div>
@@ -429,16 +383,16 @@
             <section id="toolkit" class="section">
                 <div class="eyebrow">November 2024 – November 2025</div>
                 <h2>The AI Toolkit: A Subjective Truth</h2>
-                <p>This analysis reflects my subjective experience using each platform during their active iterations across a 12-month period. Each platform released significant updates during this window. These findings are snapshot-specific to that timeframe and may differ as tools continue to evolve.</p>
-                <p>One line each: what I learned about how each platform performs under high-pressure, real-world demands.</p>
+                <p>I rotated across multiple AI platforms throughout the year, using each for what it does best. Tool choice matters less than disciplined method, cross-checking, and context control. Here's what I learned about how each platform performs under high-pressure, real-world demands:</p>
 
-                <div class="btn-group" id="ai-tool-buttons"></div>
+                <ul style="margin: 1.5rem 0 2rem 1.2rem;">
+                    <li><strong>ChatGPT:</strong> Primary reasoning engine. Best for structured drafting, procedural guidance, cross-exam prep, and synthesizing complex timelines under time pressure. Consistent, pragmatic, rarely refuses substantive work.</li>
+                    <li><strong>Claude:</strong> Long-document digestion and tone calibration. Strongest at synthesizing dense materials and drafting sensitive communications (emails, affidavits, formal correspondence). Most cautious on edge cases; highest safety-guardrail activation.</li>
+                    <li><strong>Perplexity:</strong> Fast factual cross-checks and live research. Reliable for caselaw verification, current legal developments, and sanity-checking AI hallucination risk. Strictly factual outputs reinforce the need for human synthesis.</li>
+                    <li><strong>Gemini & others:</strong> Experimental and secondary use. Useful occasionally for cross-checking bias or testing alternative approaches, but not core to the methodology.</li>
+                </ul>
 
-                <div id="tool-analysis-panel" class="card" style="min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                    <h4 id="tool-title" style="font-size: 1.5rem; margin-bottom: 1rem;"></h4>
-                    <p id="tool-summary" style="margin-bottom: 1.5rem;"></p>
-                    <div id="tool-keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;"></div>
-                </div>
+                <p style="color: var(--muted); font-size: 0.9rem;"><strong>Core insight:</strong> The discipline of cross-platform verification matters more than any single tool's capabilities. Each platform reveals blind spots in the others.</p>
 
                 <div class="pill-nav-group">
                     <a href="#results" class="pill-nav">→ Results</a>
@@ -477,11 +431,9 @@
                     </div>
                 </div>
 
-                <h3>Cost Analysis</h3>
                 <div class="chart-container">
                     <canvas id="costChart"></canvas>
                 </div>
-                <p style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.85rem;"><strong>Actual Cost:</strong> $360 AI subscription | <strong>Avoided Cost:</strong> $30K–60K in professional legal fees</p>
 
                 <h3>Core Learnings</h3>
                 <div class="grid-2">
@@ -544,7 +496,7 @@
                 <h2>Let's Explore Together</h2>
                 
                 <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Living Lab. Evolving Solutions.</h3>
-                <p style="margin-bottom: 2rem;">I work with teams and organizations facing complex challenges—legal roadblocks, institutional navigation, research bottlenecks, strategic clarity. Mission-driven nonprofits. Corporate teams seeking competitive advantage. Academic researchers. Growth-focused organizations. All face similar problems: too much information, insufficient clarity, need for rigor under pressure.</p>
+                <p style="margin-bottom: 2rem;">I work with teams and organizations facing complex challenges—legal roadblocks, institutional navigation, research bottlenecks, strategic clarity. Mission-driven nonprofits. Corporate teams seeking competitive advantage. Academic researchers. Growth-focused organizations. And individuals facing one-off high-stakes decisions. All face similar problems: too much information, insufficient clarity, need for rigor under pressure.</p>
 
                 <p style="margin-bottom: 2rem;">As AI evolves logarithmically, so do the solutions available. I'm not committed to any single approach—I'm committed to asking better questions and finding patterns that emerge as tools improve. That's what a living lab does.</p>
 
@@ -607,13 +559,12 @@
         <footer>
             <div style="max-width: 720px; margin: 0 auto; padding: 2rem 0; border-top: 1px solid var(--border);">
                 <p style="margin-bottom: 1rem; font-size: 0.75rem; line-height: 1.6;">
-                    <strong>© 2025 Diploria.net</strong> — A living lab for complex problems. As AI evolves, so do the solutions.
+                    <strong>© 2025 Diploria.net</strong> — A living lab for complex problems. Educational only, not legal advice.
                 </p>
-                <p style="margin-bottom: 1rem; font-size: 0.7rem; color: var(--muted); line-height: 1.5;">
-                    <strong>Educational only.</strong> Not legal advice. <strong>Privacy:</strong> All inquiries to reef@diploria.net are treated with strict confidentiality. <a href="#privacy" style="border-bottom: 1px solid var(--accent); color: var(--accent);">See full Privacy & Legal policy.</a>
+                <p style="margin-bottom: 1.5rem; font-size: 0.7rem; color: var(--muted); line-height: 1.5;">
+                    <a href="#privacy" style="border-bottom: 1px solid var(--accent); color: var(--accent);">See full Privacy & Legal policy.</a> Contact: <a href="mailto:reef@diploria.net" style="border-bottom: 1px solid var(--accent); color: var(--accent);">reef@diploria.net</a>
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; font-size: 0.75rem; margin-bottom: 1.5rem;">
-                    <a href="mailto:reef@diploria.net" style="border-bottom: 1px solid var(--accent); color: var(--accent);">Contact: reef@diploria.net</a>
                     <a href="https://www.linkedin.com" target="_blank" style="border-bottom: 1px solid var(--muted);">LinkedIn</a>
                     <a href="https://twitter.com" target="_blank" style="border-bottom: 1px solid var(--muted);">Twitter</a>
                     <a href="https://bsky.app" target="_blank" style="border-bottom: 1px solid var(--muted);">Bluesky</a>
@@ -625,6 +576,7 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const projectData = {
             stages: [
@@ -673,29 +625,6 @@
             ]
         };
 
-        const aiToolsData = {
-            'ChatGPT': {
-                title: 'Primary Structured Reasoning Engine',
-                summary: 'Best for sustained legal drafting and procedural guidance. Consistently the least judgmental and most pragmatic partner for complex, structured reasoning over long conversations. Excels at procedural documentation and role-playing courtroom scenarios.',
-                keywords: ['Procedural Drafting', 'Sustained Role-Play', 'Legal Guidance', 'Structured Reasoning']
-            },
-            'Claude': {
-                title: 'Long-Document Synthesis & Ethical Verification',
-                summary: 'Strongest at synthesizing dense documents and calibrating tone. Highest incidence of safety guardrails—useful for ethical checks and verification, but limited for deep procedural drafting in complex legal contexts.',
-                keywords: ['Document Synthesis', 'Ethical Checks', 'Tone Calibration', 'Cautious Verification']
-            },
-            'Perplexity': {
-                title: 'Live Web Access & Cross-Checking',
-                summary: 'Reliable for real-time factual grounding and cross-referencing. Strictly factual outputs reinforce the need for human synthesis and application. Excellent for objective data queries and verifying current information.',
-                keywords: ['Web Research', 'Fact-Checking', 'Objective Data', 'Verification']
-            },
-            'Gemini': {
-                title: 'Generalist Sanity-Checker',
-                summary: 'Strong generalist tool primarily used for cross-checking outputs from other platforms to mitigate bias and test reliability. Balanced performance across domains, serving as a critical sanity check on core findings.',
-                keywords: ['Cross-Checking', 'Bias Mitigation', 'Balanced Performance', 'Sanity Check']
-            }
-        };
-
         // Project Hub
         const stepsContainer = document.getElementById('process-steps-container');
         const detailsContainer = document.getElementById('process-details-content');
@@ -737,35 +666,6 @@
         updateDetails(projectData.stages[0].id);
         stepsContainer.querySelector('[data-id="discovery"]').classList.add('active');
 
-        // AI Toolkit
-        const toolButtons = document.getElementById('ai-tool-buttons');
-        const toolTitle = document.getElementById('tool-title');
-        const toolSummary = document.getElementById('tool-summary');
-        const toolKeywords = document.getElementById('tool-keywords');
-
-        function updateToolAnalysis(toolKey) {
-            const tool = aiToolsData[toolKey];
-            toolTitle.textContent = `${toolKey}: ${tool.title}`;
-            toolSummary.textContent = tool.summary;
-            toolKeywords.innerHTML = tool.keywords.map(k => `<span style="border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 0.25rem; font-size: 0.8rem;">${k}</span>`).join('');
-        }
-
-        Object.keys(aiToolsData).forEach(key => {
-            const btn = document.createElement('button');
-            btn.className = 'btn-tool';
-            btn.textContent = key;
-            btn.dataset.tool = key;
-            btn.addEventListener('click', () => {
-                updateToolAnalysis(key);
-                document.querySelectorAll('.btn-tool').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-            toolButtons.appendChild(btn);
-        });
-
-        updateToolAnalysis('ChatGPT');
-        toolButtons.querySelector('[data-tool="ChatGPT"]').classList.add('active');
-
         // Cost Chart
         const ctx = document.getElementById('costChart').getContext('2d');
         new Chart(ctx, {
@@ -776,20 +676,20 @@
                     data: [360, 45000],
                     backgroundColor: ['#c96a3c', '#e1e1da'],
                     borderColor: '#ffffff',
-                    borderWidth: 2
+                    borderWidth: 3
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '65%',
+                cutout: '70%',
                 plugins: {
                     legend: { 
                         position: 'bottom', 
                         labels: { 
                             color: '#20201e',
-                            padding: 12,
-                            font: { size: 11 }
+                            padding: 15,
+                            font: { size: 12 }
                         } 
                     }
                 }
