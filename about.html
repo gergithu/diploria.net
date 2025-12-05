@@ -269,13 +269,42 @@
             h1 { font-size: 1.6rem; }
             h2 { font-size: 1.3rem; }
         }
+        /* === About Page Hero Title Styling === */
+
+.about-hero-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.about-hero-subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-bottom: 40px;
+}
+   /* === Coral Icon Hover Effect === */
+.coral-logo svg {
+    transition: all 0.25s ease-in-out;
+}
+
+.coral-logo:hover svg {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px #00c8ff);
+    cursor: pointer;
+} 
     </style>
 </head>
 <body>
     <div class="page">
         <header>
-            <a href="#methodology" class="brand-icon">
-                <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <header>
+    <a href="about.html" class="brand-icon coral-logo">
+        <svg width="40" height="40" …>viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
                             <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
@@ -313,7 +342,12 @@
         <main>
             <!-- HERO -->
             <section id="methodology" class="section">
-                <div class="pill">AI-Accelerated Research</div>
+                <div class="pill"><div class="about-hero">
+    <h1 class="about-hero-title">AI-Accelerated Research</h1>
+    <p class="about-hero-subtitle">
+        Practical workflows. Real-world use cases. Thoughtful application of generative intelligence.
+    </p>
+</div></div>
                 <div class="eyebrow">A Working Lab</div>
                 <h1>Speed. Verification. Decision Support.</h1>
 
