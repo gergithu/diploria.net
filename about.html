@@ -276,17 +276,66 @@
             h2 { font-size: 1.3rem; }
         }
 
-        /* === About Page Hero === */
-        .about-hero {
-            max-width: 520px;
-            margin: 0 auto 3rem;
-            padding: 3rem 2.2rem;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.82);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.05);
-            text-align: center;
-        }
+       /* === About Page Hero === */
+.hero-section {
+    max-width: 960px;
+}
+
+.about-hero {
+    width: 100%;
+    max-width: 780px;
+    margin: 6vh auto 4rem;
+    padding: 4rem 3rem 3.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.about-hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 0.45em;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.about-hero-subtitle {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Bigger on very wide screens */
+@media (min-width: 1280px) {
+    .about-hero {
+        max-width: 900px;
+        padding: 4.2rem 3.4rem 3.6rem;
+    }
+    .about-hero-title {
+        font-size: 3.1rem;
+    }
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+    .about-hero {
+        padding: 2.4rem 1.6rem 2.3rem;
+        margin: 5vh auto 2.4rem;
+    }
+    .about-hero-title {
+        font-size: 1.8rem;
+        letter-spacing: 0.32em;
+    }
+    .about-hero-subtitle {
+        font-size: 0.9rem;
+    }
+} /* === About Page Hero === */
+        
 
         .about-hero-title {
             font-size: 2.4rem;
@@ -373,7 +422,7 @@
 
     <main>
         <!-- HERO / METHODOLOGY INTRO -->
-        <section id="methodology" class="section">
+        <section id="methodology" class="section hero-section">
 
             <div class="about-hero">
                 <h1 class="about-hero-title">AI-ACCELERATED<br>RESEARCH</h1>
