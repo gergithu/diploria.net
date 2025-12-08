@@ -46,7 +46,7 @@
             content: "";
             position: fixed;
             inset: 0;
-            background-image: url("images/brain-coral.jpeg");
+            background-image: url("brain-coral.png");
             background-repeat: no-repeat;
             background-position: center bottom;
             background-size: cover;
@@ -79,6 +79,24 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             font-weight: 700;
+        }
+
+        .brand-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand-icon:hover {
+            opacity: 0.8;
+        }
+
+        .brand-icon svg {
+            width: 40px;
+            height: 40px;
         }
 
         nav a {
@@ -189,7 +207,7 @@
 
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
-            nav { display: none !important; }
+            /* nav { display: none !important; } */
         }
 
         .process-step {
@@ -230,28 +248,43 @@
 
         .metric-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 0.6rem;
             margin: 2rem 0;
         }
 
         .metric-card {
             border: 1px solid var(--border);
-            padding: 1.5rem;
+            padding: 0.8rem 0.5rem;
             text-align: center;
             background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
         }
 
         .metric-value {
-            font-size: 2rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.1;
         }
 
         .metric-label {
-            font-size: 0.85rem;
+            font-size: 0.6rem;
             color: var(--muted);
+            line-height: 1.2;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: 2rem auto;
+            height: 280px;
         }
 
         .chart-container {
@@ -279,12 +312,40 @@
 <body>
     <div class="page">
         <header>
-            <div class="brand">DIPLORIA.NET</div>
+            <a href="#philosophy" class="brand-icon">
+                <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
+                            <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.3" stroke-width="1.5" />
+                    <circle cx="32" cy="32" r="8" fill="url(#polyp-core)" />
+                    <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
+                        <path id="tentacle" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
+                        <use href="#tentacle" transform="rotate(30)" />
+                        <use href="#tentacle" transform="rotate(60)" />
+                        <use href="#tentacle" transform="rotate(90)" />
+                        <use href="#tentacle" transform="rotate(120)" />
+                        <use href="#tentacle" transform="rotate(150)" />
+                        <use href="#tentacle" transform="rotate(180)" />
+                        <use href="#tentacle" transform="rotate(210)" />
+                        <use href="#tentacle" transform="rotate(240)" />
+                        <use href="#tentacle" transform="rotate(270)" />
+                        <use href="#tentacle" transform="rotate(300)" />
+                        <use href="#tentacle" transform="rotate(330)" />
+                    </g>
+                </svg>
+            </a>
             <nav>
+                <a href="about.html">About</a>
                 <a href="#philosophy">Philosophy</a>
                 <a href="#metaphor">Metaphor</a>
                 <a href="#case-study">Case Study</a>
                 <a href="#domains">Applications</a>
+                <a href="#privacy">Privacy</a>
             </nav>
         </header>
 
@@ -293,9 +354,21 @@
             <section id="philosophy" class="section">
                 <div class="pill">Notes from the reef</div>
                 <div class="eyebrow">Welcome to Diploria</div>
-                <h1>Diploria – a patient AI laboratory for thinking</h1>
+                <h1>Diploria – an ecosystem for thinking</h1>
 
-                <p>Diploria is a living laboratory where ideas, data, and memories grow together much like a brain coral reef. The name comes from <em>Diploria labyrinthiformis</em>, a species whose skeleton is built cell by cell, polyp by polyp, over decades rather than a single generation.</p>
+                <p style="font-size: 1.1rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem;">I'm a living lab for complex problems. As AI evolves, so do the solutions. Bring your challenge.</p>
+
+                <p style="margin-bottom: 1.5rem;">Legal, financial, strategic, research—whatever the domain. I bring 30+ years of experience navigating high-stakes environments: pioneering brands, driving growth through networks, delivering results under pressure. That expertise, combined with rigorous methodology and evolving AI tools, becomes a lens for seeing patterns others miss and finding paths forward that didn't exist yesterday.</p>
+
+                <div style="text-align: center; margin: 2.5rem 0;">
+                    <a href="mailto:reef@diploria.net?subject=Let%27s%20Explore%20Together&body=My%20challenge:%0A%0A(Describe%20what%20you%27re%20trying%20to%20solve%20—%20legal,%20financial,%20strategic,%20research,%20or%20something%20else)%0A%0AWhat%20I%20represent:%0A%0A(Organization,%20team,%20or%20research%20focus)" 
+                       style="display: inline-block; background-color: var(--accent); color: white; padding: 0.8rem 1.8rem; border-radius: 0.25rem; font-weight: 500; transition: opacity 0.3s ease;">
+                        Bring Your Challenge. Let's Explore.
+                    </a>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">Tell me what you're trying to solve.</p>
+                </div>
+
+                <p>Diploria is a living laboratory where ideas, data, and memories grow together much like a coral reef—a miracle designed around countless organisms working in concert. The name comes from <em>Diploria labyrinthiformis</em>, a species whose skeleton is built cell by cell, polyp by polyp, over decades. I chose the genus name for brain coral deliberately: its contours mirror the mammalian cortex, and that resemblance triggers something essential about consciousness itself.</p>
 
                 <p>That slow, patient construction reminds me that true knowledge, like coral, accrues incrementally—each conversation, each experiment, each reflection adds a new "polyp" to the structure. This site documents a year-long experiment in pairing disciplined judgment with modern AI systems, exploring how these tools can extend individual capability.</p>
 
@@ -340,7 +413,7 @@
                 <p>After a multi-year career break, I needed to rebuild focus and skill. The emergence of Generative AI provided a unique opportunity to tackle a real-world, high-stakes challenge: independently managing a complex legal matter from start to finish.</p>
 
                 <h3>The Casework Engine</h3>
-                <p>This section details the core of the project. It was a hands-on, procedural journey through a confidential legal matter, using AI as the primary guide. Click on each stage to explore how technology was applied to solve complex tasks.</p>
+                <p>This section distills the core of the project into two views: the AI toolkit I used under pressure, and the outcomes achieved.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; margin: 2rem 0;">
                     <div id="process-steps-container" style="display: flex; flex-direction: column;"></div>
@@ -355,17 +428,11 @@
 
             <!-- AI TOOLKIT -->
             <section id="toolkit" class="section">
-                <div class="eyebrow">Four Perspectives</div>
+                <div class="eyebrow">November 2024 – November 2025</div>
                 <h2>The AI Toolkit: A Subjective Truth</h2>
-                <p>This analysis reflects my personal experience using each platform under high-pressure demands. Each tool revealed distinct strengths and limitations.</p>
+                <p>This analysis reflects my subjective experience using each platform during their active iterations across a 12-month period. Each platform released significant updates during this window. These findings are snapshot-specific to that timeframe and may differ as tools continue to evolve.</p>
 
-                <div class="btn-group" id="ai-tool-buttons"></div>
-
-                <div id="tool-analysis-panel" class="card" style="min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-                    <h4 id="tool-title" style="font-size: 1.5rem; margin-bottom: 1rem;"></h4>
-                    <p id="tool-summary" style="margin-bottom: 1.5rem;"></p>
-                    <div id="tool-keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;"></div>
-                </div>
+                <p>In practice, I rotated across several platforms—primarily ChatGPT, Claude, and Perplexity—using each for what it does best: structured reasoning and drafting, long-document synthesis, and rapid factual cross-checks. Tool choice mattered less than disciplined method, cross-verification, and context control.</p>
 
                 <div class="pill-nav-group">
                     <a href="#results" class="pill-nav">→ Results</a>
@@ -404,9 +471,11 @@
                     </div>
                 </div>
 
+                <h3>Cost Analysis</h3>
                 <div class="chart-container">
                     <canvas id="costChart"></canvas>
                 </div>
+                <p style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.85rem;"><strong>Actual Cost:</strong> $360 AI subscription | <strong>Avoided Cost:</strong> $30K–60K in professional legal fees</p>
 
                 <h3>Core Learnings</h3>
                 <div class="grid-2">
@@ -455,8 +524,8 @@
                     <p style="margin-top: 0.5rem;">Leveraged AI's objectivity to structure unstructured personal memories, transforming raw journal entries into coherent narrative chapters for a future memoir.</p>
                 </div>
                 <div class="card">
-                    <strong>Sensitive Family Dynamics</strong>
-                    <p style="margin-top: 0.5rem;">Utilized AI as a neutral third-party to analyze complex interpersonal dynamics and draft emotionally intelligent communications for difficult family situations.</p>
+                    <strong>Sensitive Social & Interpersonal Communications</strong>
+                    <p style="margin-top: 0.5rem;">Utilized AI as a neutral third-party to analyze complex interpersonal dynamics and draft emotionally intelligent communications for difficult, nuanced situations—whether with relatives, close friends, colleagues, or in politically or emotionally charged contexts.</p>
                 </div>
 
                 <div class="pill-nav-group">
@@ -466,14 +535,86 @@
 
             <!-- FORWARD -->
             <section id="forward" class="section" style="text-align: center; padding: 3rem; border: 1px solid var(--border); background: white;">
-                <h2>What Comes Next?</h2>
-                <p>This year gave me back my footing, turning my desk into a classroom and uncertainty into direction. The path ahead could involve returning to school to explore AI's role in law and research, or working as an independent consultant helping others leverage these systems effectively.</p>
-                <p>What's certain is that I now have a solid foundation to build anything on.</p>
+                <h2>Let's Explore Together</h2>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Living Lab. Evolving Solutions.</h3>
+                <p style="margin-bottom: 2rem;">I work with teams and organizations facing complex challenges—legal roadblocks, institutional navigation, research bottlenecks, strategic clarity. Mission-driven nonprofits. Corporate teams seeking competitive advantage. Academic researchers. Growth-focused organizations. And individuals facing one-off high-stakes decisions. All face similar problems: too much information, insufficient clarity, and a need for rigor under pressure.</p>
+
+                <p style="margin-bottom: 2rem;">As AI evolves at high speed, so do the solutions available. I'm not committed to any single approach—I'm committed to asking better questions and finding patterns that emerge as tools improve. That's what a living lab does.</p>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Proof: A Turning Point</h3>
+                <p>Success was never guaranteed. The Crown brought the matter forward mere days before the three-day court session—originally scheduled five months earlier. That proximity to the wire proved the methodology works under extreme pressure, against a clock, with no margin for error. That same rigor applies to corporate compliance challenges, nonprofit strategy, institutional navigation, and research breakthroughs.</p>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">What Happens Next Depends On Your Challenge</h3>
+                <p>Some teams need legal research and compliance clarity. Some need to cut through institutional complexity. Some need strategic research that their competitors haven't done. Some need to explore how evolving AI changes the game for their work. All of those are explorations worth having.</p>
+
+                <div style="margin-top: 2.5rem;">
+                    <a href="mailto:reef@diploria.net?subject=Let%27s%20Explore%20Together&body=My%20challenge:%0A%0A(Describe%20what%20you%27re%20trying%20to%20solve%20—%20legal,%20financial,%20strategic,%20research,%20or%20something%20else)%0A%0AWhat%27s%20at%20stake:%0A%0A(What%20matters%20most%20about%20resolving%20this)" 
+                       style="display: inline-block; background-color: var(--accent); color: white; padding: 0.8rem 1.8rem; border-radius: 0.25rem; font-weight: 500; transition: opacity 0.3s ease;">
+                        Bring Your Challenge. Let's Explore.
+                    </a>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">Tell me what you're trying to solve and what's at stake.</p>
+                </div>
+            </section>
+
+            <!-- PRIVACY & LEGAL -->
+            <section id="privacy" class="section">
+                <div class="eyebrow">Privacy & Legal</div>
+                <h2>Privacy, Copyright & Terms of Use</h2>
+
+                <h3>Copyright & Intellectual Property</h3>
+                <p><strong>© 2025 Diploria.net</strong>. All content on this site is protected under Canadian copyright law and international intellectual property agreements, including the Berne Convention and TRIPS Agreement.</p>
+                <p>The <strong>case study details remain confidential and cannot be discussed, quoted, or reproduced</strong>. However, the <strong>methodologies, frameworks, and transferable skills</strong> presented are freely shareable and applicable for educational and professional purposes.</p>
+
+                <h3>Use & Attribution</h3>
+                <p>You are welcome to share, reference, and apply the methodologies and insights from this site. Attribution to Diploria.net is appreciated but not required. The frameworks are designed to be transferable and replicable.</p>
+
+                <h3>Confidentiality & Privacy</h3>
+                <p>All communications sent to <strong>reef@diploria.net</strong> are treated with <strong>strict confidentiality</strong>. Your information will not be shared, sold, or distributed to third parties without your prior written permission. This applies globally and complies with:</p>
+                <ul>
+                    <li><strong>Canada:</strong> Personal Information Protection and Electronic Documents Act (PIPEDA)</li>
+                    <li><strong>Europe:</strong> General Data Protection Regulation (GDPR)</li>
+                    <li><strong>United States:</strong> State privacy laws and federal standards</li>
+                    <li><strong>International:</strong> APEC Privacy Framework and global data protection standards</li>
+                </ul>
+
+                <h3>Data Collection & Use</h3>
+                <p>This site does not collect personal data unless you voluntarily contact us. Any information you provide via email remains confidential and is used solely to respond to your inquiry. We do not use analytics that track personal behavior.</p>
+
+                <h3>Educational Use & Disclaimer</h3>
+                <p><strong>I am not a lawyer.</strong> This site is educational and informational in nature. The content is based on personal experience navigating complex systems using AI tools. It is not legal advice. For legal matters, please consult a qualified legal professional in your jurisdiction.</p>
+
+                <h3>Pre-Approval & Permission</h3>
+                <p>Use of this site's content requires pre-approval only if you intend to republish, commercially exploit, or use the case study details. Educational, personal, and non-commercial use of methodologies is freely permitted. For commercial licensing or special permissions, contact <strong>reef@diploria.net</strong>.</p>
+
+                <h3>Contact & Inquiries</h3>
+                <p>Questions about privacy, copyright, licensing, or collaboration? Reach out to:</p>
+                <p><strong>Email:</strong> reef@diploria.net</p>
+                <p>All inquiries are treated confidentially and will be responded to in a timely manner.</p>
+
+                <div class="pill-nav-group">
+                    <a href="#philosophy" class="pill-nav">← Back to Philosophy</a>
+                </div>
             </section>
         </main>
 
         <footer>
-            © Diploria.net – built polyp by polyp
+            <div style="max-width: 720px; margin: 0 auto; padding: 2rem 0; border-top: 1px solid var(--border);">
+                <p style="margin-bottom: 1rem; font-size: 0.75rem; line-height: 1.6;">
+                    <strong>© 2025 Diploria.net</strong>
+                </p>
+                <p style="margin-bottom: 1.5rem; font-size: 0.7rem; color: var(--muted); line-height: 1.5;">
+                    <a href="#privacy" style="border-bottom: 1px solid var(--accent); color: var(--accent);">See full Privacy & Legal policy.</a> Contact: <a href="mailto:reef@diploria.net" style="border-bottom: 1px solid var(--accent); color: var(--accent);">reef@diploria.net</a>
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; font-size: 0.75rem; margin-bottom: 1.5rem;">
+                    <a href="https://www.linkedin.com" target="_blank" style="border-bottom: 1px solid var(--muted);">LinkedIn</a>
+                    <a href="https://twitter.com" target="_blank" style="border-bottom: 1px solid var(--muted);">Twitter</a>
+                    <a href="https://bsky.app" target="_blank" style="border-bottom: 1px solid var(--muted);">Bluesky</a>
+                </div>
+                <p style="font-size: 0.7rem; color: var(--muted); text-align: center;">
+                    Bring your challenge. Let's explore together.
+                </p>
+            </div>
         </footer>
     </div>
 
@@ -525,29 +666,6 @@
             ]
         };
 
-        const aiToolsData = {
-            'ChatGPT': {
-                title: 'The Pragmatist',
-                summary: 'Consistently the least judgmental and most pragmatic, making it the primary partner for drafting procedural documentation. Excellent for complex, sustained role-playing.',
-                keywords: ['Pragmatic', 'Procedural Focus', 'Sustained Role-Play', 'Reliable']
-            },
-            'Claude': {
-                title: 'The Guardian',
-                summary: 'The highest incidence of Safety Guardrail Activation. Best used for ethical checks and high-level verification, but limited for deep procedural drafting.',
-                keywords: ['Cautious', 'Ethical Checks', 'Safety Focused', 'Limited']
-            },
-            'Perplexity': {
-                title: 'The Fact-Checker',
-                summary: 'Highly reliable for raw factual summaries and brief context validation. Strictly factual outputs reinforce the need for human synthesis.',
-                keywords: ['Factual', 'Context Validation', 'Objective Data', 'Reliable']
-            },
-            'Gemini': {
-                title: 'The Cross-Reference',
-                summary: 'A strong generalist tool used primarily for cross-checking outputs from other platforms to mitigate bias and test reliability.',
-                keywords: ['Cross-Checking', 'Balanced', 'Generalist', 'Sanity Check']
-            }
-        };
-
         // Project Hub
         const stepsContainer = document.getElementById('process-steps-container');
         const detailsContainer = document.getElementById('process-details-content');
@@ -561,6 +679,14 @@
                 updateDetails(stage.id);
                 document.querySelectorAll('.process-step').forEach(s => s.classList.remove('active'));
                 el.classList.add('active');
+                // Scroll the detail panel into view with dynamic header offset
+                setTimeout(() => {
+                    const header = document.querySelector('header');
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const detailsRect = detailsContainer.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset + detailsRect.top - headerHeight - 20;
+                    window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                }, 100);
             });
             stepsContainer.appendChild(el);
         });
@@ -615,20 +741,27 @@
         new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Potential Professional Fees', 'Actual Fees Paid'],
+                labels: ['AI Subscription: $360', 'Avoided Professional Fees: $30K–60K'],
                 datasets: [{
-                    data: [100, 0],
-                    backgroundColor: ['#e1e1da', '#c96a3c'],
+                    data: [360, 45000],
+                    backgroundColor: ['#c96a3c', '#e1e1da'],
                     borderColor: '#ffffff',
-                    borderWidth: 3
+                    borderWidth: 2
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '70%',
+                cutout: '65%',
                 plugins: {
-                    legend: { position: 'bottom', labels: { color: '#20201e' } }
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { 
+                            color: '#20201e',
+                            padding: 12,
+                            font: { size: 11 }
+                        } 
+                    }
                 }
             }
         });
@@ -652,14 +785,3 @@
     </script>
 </body>
 </html>
-```
-
-**Now:**
-1. Select all this code (highlight it)
-2. Copy it (`Cmd + C`)
-3. Open BBEdit → `File > New`
-4. Paste (`Cmd + V`)
-5. Save as `index.html` in your Diploria folder
-6. Commit and push in GitHub Desktop
-
-Done.
