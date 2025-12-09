@@ -383,6 +383,93 @@
     }
 
         }
+/* --- Hero CTA Grid --- */
+.cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem;
+    margin: 2.5rem 0 1.5rem;
+}
+
+.cta-item {
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.2rem 1rem;
+    background: white;
+    text-align: left;
+}
+
+.cta-item h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.cta-item p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* --- Hero CTA positioning + buttons --- */
+.hero-lead {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.cta-positioning {
+    text-align: center;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.cta-positioning p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.cta-link {
+    display: inline-block;
+    padding: 0.5rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.95);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.cta-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Responsive tweaks for CTA */
+@media (max-width: 900px) {
+    .cta-grid {
+        grid-template-columns: 1fr;
+    }
+    .cta-item {
+        text-align: left;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}        
     </style>
 </head>
 <body>
@@ -427,30 +514,59 @@
     </header>
 
     <main>
-        <!-- HERO / METHODOLOGY INTRO -->
+              <!-- HERO / METHODOLOGY INTRO -->
         <section id="methodology" class="section hero-section">
 
-    <div class="about-hero feature-card">
-        <h1 class="about-hero-title">AI-ACCELERATED<br>RESEARCH</h1>
-        <p class="about-hero-subtitle">
-            Practical workflows. Real-world use cases. Thoughtful application of generative intelligence.
-        </p>
-    </div>
+            <div class="about-hero feature-card">
+                <h1 class="about-hero-title">AI-ACCELERATED<br>RESEARCH</h1>
+                <p class="about-hero-subtitle">
+                    Practical workflows. Real-world use cases. Thoughtful application of generative intelligence.
+                </p>
+            </div>
 
             <div class="eyebrow">A Working Lab</div>
             <h2>Speed. Verification. Decision Support.</h2>
 
-            <p style="font-size: 1.1rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem;"><p style="font-size: 1.1rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem;">
-               
-</p>I turn messy information into clear decision frameworks—using AI to accelerate the work and disciplined judgment to verify what matters. Together, we translate that clarity into concrete next steps you can defend.
-            
+            <p class="hero-lead">
+                I turn messy information into clear, defensible decisions—using AI to accelerate the work and disciplined judgment to verify what matters.
             </p>
 
-            <p>This is a working lab. I've tested one methodology on a real high-stakes situation and it worked. Now I'm documenting the approach and exploring how it applies to other challenges: legal research under pressure, institutional navigation, research bottlenecks, financial clarity.</p>
+            <!-- THREE-COLUMN CTA GRID -->
+            <div class="cta-grid">
+                <div class="cta-item">
+                    <h3>Speed</h3>
+                    <p>Decision-ready synthesis delivered fast. I convert unstructured material into actionable clarity.</p>
+                </div>
 
-           <p>
-    If you have a complex problem that requires synthesis, documentation, or a decision you cannot afford to get wrong, we map the landscape together: what you know, what you do not, which constraints are real, and where AI can safely help. From there, we see whether this methodology is the right fit for your challenge.
-</p>
+                <div class="cta-item">
+                    <h3>Verification</h3>
+                    <p>Bias-resistant checks: cross-referencing, factual validation, and audit-ready reasoning.</p>
+                </div>
+
+                <div class="cta-item">
+                    <h3>Decision Support</h3>
+                    <p>Options, risks, and trade-offs structured into a defensible, executive-level framework.</p>
+                </div>
+            </div>
+
+            <!-- CTA MICRO-ACTIONS -->
+            <div class="cta-positioning">
+                <p><strong>See how this works in practice:</strong></p>
+                <div class="cta-buttons">
+                    <a href="#proof" class="cta-link">View a real case →</a>
+                    <a href="#applications" class="cta-link">Explore applications →</a>
+                    <a href="mailto:reef@diploria.net?subject=One-Page%20Diagnostic&body=Briefly%20describe%20your%20challenge%20and%20what%27s%20at%20stake."
+                       class="cta-link">Start a one-page diagnostic →</a>
+                </div>
+            </div>
+
+            <p>
+                This is a working lab. I've tested one methodology on a real high-stakes situation and it worked. Now I'm documenting the approach and exploring how it applies to other challenges: legal research under pressure, institutional navigation, research bottlenecks, financial clarity.
+            </p>
+
+            <p>
+                If you have a complex problem that requires synthesis, documentation, or a decision you cannot afford to get wrong, we map the landscape together: what you know, what you do not, which constraints are real, and where AI can safely help. From there, we see whether this methodology is the right fit for your challenge.
+            </p>
 
             <div style="text-align: center; margin: 2.5rem 0;">
                 <a href="mailto:reef@diploria.net?subject=Let%27s%20Explore%20Together&body=I%20have%20a%20challenge:%0A%0A(Describe%20what%20you%27re%20trying%20to%20solve)%0A%0AWhat%27s%20at%20stake:%0A%0A(What%20matters%20most%20about%20getting%20this%20right)"
