@@ -12,6 +12,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
+    /* 1. Coral logo hover */
+.logo-hover {
+    transition: transform 0.25s ease, filter 0.25s ease;
+    transform-origin: center center;
+}
+
+.logo-hover:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+}
+
+/* 2. Top navigation link hover underline */
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.8;
+    transition: width 0.18s ease-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* 3. Feature / section card hover */
+.feature-card {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.18);
+}
         :root {
             --bg: #f5f5f3;
             --ink: #20201e;
@@ -411,25 +454,25 @@
                 </g>
             </svg>
         </a>
-        <nav>
-            <a href="#methodology">Methodology</a>
-            <a href="#proof">Proof</a>
-            <a href="#approach">How It Works</a>
-            <a href="#privacy">Privacy</a>
-            <a href="index.html">Home</a>
-        </nav>
+       <nav>
+    	 <a href="#methodology" class="nav-link">Methodology</a>
+    	 <a href="#proof" class="nav-link">Proof</a>
+    	 <a href="#approach" class="nav-link">How It Works</a>
+    	 <a href="#privacy" class="nav-link">Privacy</a>
+    	 <a href="index.html" class="nav-link">Home</a>
+	   </nav>
     </header>
 
     <main>
         <!-- HERO / METHODOLOGY INTRO -->
         <section id="methodology" class="section hero-section">
 
-            <div class="about-hero">
-                <h1 class="about-hero-title">AI-ACCELERATED<br>RESEARCH</h1>
-                <p class="about-hero-subtitle">
-                    Practical workflows. Real-world use cases. Thoughtful application of generative intelligence.
-                </p>
-            </div>
+    <div class="about-hero feature-card">
+        <h1 class="about-hero-title">AI-ACCELERATED<br>RESEARCH</h1>
+        <p class="about-hero-subtitle">
+            Practical workflows. Real-world use cases. Thoughtful application of generative intelligence.
+        </p>
+    </div>
 
             <div class="eyebrow">A Working Lab</div>
             <h2>Speed. Verification. Decision Support.</h2>
@@ -499,9 +542,9 @@
 
             <h3>How the Case Used This Approach</h3>
             <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; margin: 2rem 0;">
-                <div id="process-steps-container" style="display: flex; flex-direction: column;"></div>
-                <div id="process-details-content" class="card" style="min-height: 400px;"></div>
-            </div>
+    			<div id="process-steps-container" style="display: flex; flex-direction: column;"></div>
+    			<div id="process-details-content" class="card feature-card" style="min-height: 400px;"></div>
+			</div>
 
             <div class="metric-cards">
                 <div class="metric-card">
