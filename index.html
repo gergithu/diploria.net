@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diploria — Home</title>
-  <meta name="description" content="Diploria: decision-grade clarity from messy information. Verified synthesis, traceable reasoning, clear next steps." />
+  <title>Diploria — Decision-grade clarity</title>
+  <meta name="description" content="Diploria: decision-grade clarity from messy information. Verified synthesis, traceable reasoning, and usable outputs." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -16,46 +16,46 @@
 <body>
 <div class="page app">
 
-  <!-- TOP BAR -->
   <header class="topbar">
     <div class="topbar-left">
-      <a href="mailto:alias.fanning298@silomails.com"
-         class="brand-icon coral-logo"
-         aria-label="Contact Diploria (opens your email app)"
-         title="Contact (opens your email app)">
-        <!-- Coral SVG -->
-        <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
-              <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
-            </radialGradient>
-          </defs>
-          <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.3" stroke-width="1.5" />
-          <circle cx="32" cy="32" r="8" fill="url(#polyp-core)" />
-          <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
-            <path id="tentacle" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
-            <use href="#tentacle" transform="rotate(30)" />
-            <use href="#tentacle" transform="rotate(60)" />
-            <use href="#tentacle" transform="rotate(90)" />
-            <use href="#tentacle" transform="rotate(120)" />
-            <use href="#tentacle" transform="rotate(150)" />
-            <use href="#tentacle" transform="rotate(180)" />
-            <use href="#tentacle" transform="rotate(210)" />
-            <use href="#tentacle" transform="rotate(240)" />
-            <use href="#tentacle" transform="rotate(270)" />
-            <use href="#tentacle" transform="rotate(300)" />
-            <use href="#tentacle" transform="rotate(330)" />
-          </g>
-        </svg>
-      </a>
+      <a class="brand" href="index.html" aria-label="Diploria Home">
+        <span class="coral-logo" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="polyp-core-home" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
+                <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.55" />
+                <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
+              </radialGradient>
+            </defs>
+            <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.3" stroke-width="1.5" />
+            <circle cx="32" cy="32" r="8" fill="url(#polyp-core-home)" />
+            <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
+              <path id="tentacle-home" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
+              <use href="#tentacle-home" transform="rotate(30)" />
+              <use href="#tentacle-home" transform="rotate(60)" />
+              <use href="#tentacle-home" transform="rotate(90)" />
+              <use href="#tentacle-home" transform="rotate(120)" />
+              <use href="#tentacle-home" transform="rotate(150)" />
+              <use href="#tentacle-home" transform="rotate(180)" />
+              <use href="#tentacle-home" transform="rotate(210)" />
+              <use href="#tentacle-home" transform="rotate(240)" />
+              <use href="#tentacle-home" transform="rotate(270)" />
+              <use href="#tentacle-home" transform="rotate(300)" />
+              <use href="#tentacle-home" transform="rotate(330)" />
+            </g>
+          </svg>
+        </span>
 
-      <div class="topbar-title">Diploria • Home</div>
+        <div>
+          <div class="brand-name">Diploria</div>
+          <div class="brand-tag">Verified synthesis • usable outputs</div>
+        </div>
+      </a>
     </div>
 
     <div class="top-actions">
-      <a class="icon-btn"
+      <a class="icon-btn primary"
          href="mailto:alias.fanning298@silomails.com?subject=Diploria%20Support&body=Hello%20%E2%80%94%0A%0AI%20have%20a%20question%3A%0A%0A"
          title="Contact Support">
         <svg viewBox="0 0 24 24" fill="none">
@@ -76,65 +76,61 @@
         Share
       </button>
 
-      <a class="icon-btn" href="methodology.html" title="Methodology">Methodology</a>
+      <a class="icon-btn" href="workflow.html" title="Workflow">Workflow</a>
       <a class="icon-btn" href="privacy.html" title="Privacy & Legal">Privacy</a>
     </div>
   </header>
 
-  <!-- SHELL -->
   <div class="shell">
-    <!-- LEFT RAIL -->
     <aside class="rail">
       <div class="rail-header">
-        <div class="rail-title">Start Here</div>
+        <div class="rail-title">Start here</div>
         <div class="rail-sub">A simple map of the site.</div>
       </div>
 
       <nav class="rail-nav">
-        <a class="rail-link active" href="index.html">
-          <div class="kicker">00</div>
-          <div class="label">Home</div>
+        <a class="rail-link active" href="#top">
+          <div class="rail-kicker">00</div>
+          <div class="rail-label">Home</div>
         </a>
 
-        <a class="rail-link" href="methodology.html">
-          <div class="kicker">01</div>
-          <div class="label">Methodology</div>
+        <a class="rail-link" href="workflow.html">
+          <div class="rail-kicker">01</div>
+          <div class="rail-label">Workflow (how I work)</div>
         </a>
 
-        <a class="rail-link" href="methodology.html#proof">
-          <div class="kicker">02</div>
-          <div class="label">Proof</div>
+        <a class="rail-link" href="#proof">
+          <div class="rail-kicker">02</div>
+          <div class="rail-label">Proof</div>
         </a>
 
-        <a class="rail-link" href="methodology.html#applications">
-          <div class="kicker">03</div>
-          <div class="label">Applications</div>
+        <a class="rail-link" href="#applications">
+          <div class="rail-kicker">03</div>
+          <div class="rail-label">Applications</div>
         </a>
 
         <a class="rail-link" href="privacy.html">
-          <div class="kicker">↗</div>
-          <div class="label">Privacy & Legal</div>
+          <div class="rail-kicker">↗</div>
+          <div class="rail-label">Privacy & Legal</div>
         </a>
       </nav>
     </aside>
 
-    <!-- MAIN CANVAS -->
-    <main class="canvas">
-
+    <main class="canvas" id="top">
       <section class="section">
-        <div class="about-hero">
+        <div class="hero">
           <div class="eyebrow">AI-Accelerated Research</div>
           <h1>Decision-grade clarity from messy information.</h1>
           <p class="hero-sub">
             Diploria is a disciplined workflow for turning scattered material into a clean brief, verified claims, and a clear next step.
-            No hype. No “AI as a personality.” Just useful outputs.
+            No hype. No “AI as personality.” Just usable outputs.
           </p>
 
           <div class="hero-actions">
-            <a class="cta-link" href="methodology.html#proof">View proof →</a>
+            <a class="cta" href="#proof">View proof →</a>
 
-            <a class="cta-link"
-               href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AIf%20you%20answer%20A%E2%80%93C%2C%20I%20can%20respond%20usefully.%20Everything%20else%20is%20optional.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
+            <a class="cta secondary"
+               href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AAnswer%20A%E2%80%93C%20and%20I%20can%20respond%20usefully.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
               Open a Guided Email →
             </a>
           </div>
@@ -142,7 +138,7 @@
 
         <div class="grid-2">
           <div class="card">
-            <h3 style="margin-top:0;">What you get</h3>
+            <h3>What you get</h3>
             <ul>
               <li><strong>Synthesis:</strong> a tight brief from scattered inputs.</li>
               <li><strong>Verification:</strong> contradictions flagged; assumptions separated from facts.</li>
@@ -151,7 +147,7 @@
           </div>
 
           <div class="card">
-            <h3 style="margin-top:0;">Who it’s for</h3>
+            <h3>Who it’s for</h3>
             <ul>
               <li><strong>Lean teams</strong> with a research bottleneck.</li>
               <li><strong>NGOs / community orgs</strong> needing clarity under constraints.</li>
@@ -161,27 +157,59 @@
         </div>
 
         <div class="card">
-          <h3 style="margin-top:0;">What makes it different</h3>
-          <p style="margin-bottom:0;">
-            Most “AI users” generate text. Diploria is about producing <strong>decision artifacts</strong> you can trust:
-            traceable reasoning, explicit assumptions, and verification discipline. The proof section shows what that looks like in practice.
+          <h3>What makes it different</h3>
+          <p>
+            Most “AI users” generate text. Diploria produces <strong>decision artifacts</strong> you can trust:
+            traceable reasoning, explicit assumptions, and verification built into the workflow.
           </p>
+          <p>
+            If you want the details, the full workflow is on the <a href="workflow.html">Workflow</a> page.
+          </p>
+        </div>
+      </section>
+
+      <section id="proof" class="section">
+        <div class="eyebrow">Proof</div>
+        <h2>A year-long legal project — built and managed end-to-end.</h2>
+
+        <p>
+          I used this workflow on a real high-stakes legal matter over a full year.
+          The work required careful handling of messy records, strict attention to detail, and writing that could survive scrutiny.
+        </p>
+        <p>
+          The point isn’t “AI is magic.” The point is that <strong>AI plus verification</strong> can produce professional-grade outputs when the workflow is disciplined.
+        </p>
+
+        <div class="card">
+          <h3>What I did</h3>
+          <ul>
+            <li><strong>Ran the project</strong>: self-directed, deadline-driven, no support staff.</li>
+            <li><strong>Converted dense records</strong> into usable artifacts.</li>
+            <li><strong>Built a traceable timeline + issue map</strong> to surface contradictions and unknowns.</li>
+            <li><strong>Drafted formal correspondence</strong> with professional structure.</li>
+            <li><strong>Cross-verified across multiple AI systems</strong> to reduce tool bias and error risk.</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3 style="margin-top:0;">Next step</h3>
-          <p style="margin-bottom:0.8rem;">
-            If you want to explore fit without a sales routine, use the guided email. It forces clarity fast, without pressure.
+          <p>
+            Want the mechanics and the structure? Go to <a href="workflow.html#artifacts">Workflow → Artifacts</a>.
           </p>
-          <div class="hero-actions">
-            <a class="cta-link" href="methodology.html">Read methodology →</a>
-            <a class="cta-link"
-               href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AIf%20you%20answer%20A%E2%80%93C%2C%20I%20can%20respond%20usefully.%20Everything%20else%20is%20optional.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
-              Open a Guided Email →
-            </a>
-          </div>
         </div>
+      </section>
 
+      <section id="applications" class="section">
+        <div class="eyebrow">Applications</div>
+        <h2>Where this helps</h2>
+
+        <div class="card">
+          <ul>
+            <li><strong>Lean teams:</strong> research briefs, decision memos, due diligence support.</li>
+            <li><strong>NGOs & community orgs:</strong> policy synthesis, stakeholder mapping, grant support.</li>
+            <li><strong>Individuals:</strong> complex decisions where clarity matters more than volume.</li>
+            <li><strong>Legal-adjacent:</strong> organizing records and drafting correspondence (not legal advice).</li>
+          </ul>
+        </div>
       </section>
     </main>
   </div>
@@ -189,31 +217,32 @@
   <footer>
     <div class="footer-inner">
       <div><strong>© 2025 Diploria.net</strong></div>
-      <div style="margin-top:6px;">
+      <div>
         <a href="privacy.html">Privacy & Legal</a> •
+        <a href="workflow.html">Workflow</a> •
         <a href="mailto:alias.fanning298@silomails.com">Contact</a>
       </div>
-      <div style="margin-top:6px;">Speed. Verification. Clear Decisions.</div>
+      <div>Speed. Verification. Clear Decisions.</div>
     </div>
   </footer>
 
-  <!-- Bottom dock -->
-  <div class="message-dock">
-    <a href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AAnswer%20A%E2%80%93C%20and%20I%20can%20respond%20usefully.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
-      <div class="message-placeholder">Send a message</div>
+  <div class="message-dock" data-dock>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a class="message-row"
+         href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AAnswer%20A%E2%80%93C%20and%20I%20can%20respond%20usefully.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
+        <div class="message-placeholder">Send a message</div>
+        <div class="dock-icons" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 12.5l7-7a3.5 3.5 0 115 5l-8.5 8.5a5 5 0 01-7-7l8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 11l18-8-8 18-2-7-8-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
 
-      <div class="dock-icons" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M8 12.5l7-7a3.5 3.5 0 115 5l-8.5 8.5a5 5 0 01-7-7l8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 14a3 3 0 003-3V7a3 3 0 10-6 0v4a3 3 0 003 3zm6-3a6 6 0 01-12 0m6 6v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M3 11l18-8-8 18-2-7-8-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </a>
+      <button class="dock-close" type="button" data-dock-close aria-label="Hide message dock">✕</button>
+    </div>
 
     <div class="dock-pills" aria-hidden="true">
       <span class="dock-pill">Experts</span>
