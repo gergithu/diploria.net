@@ -1,0 +1,397 @@
+:root{
+  --bg:#f5f5f3;
+  --ink:#20201e;
+  --muted:#88887d;
+  --accent:#c96a3c;
+  --border:#e1e1da;
+  --glass: rgba(255,255,255,0.18);
+  --glass-border: rgba(255,255,255,0.26);
+}
+
+/* Base reset */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Default links are normal underlined links */
+a{
+  color:var(--accent);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-thickness:1px;
+}
+a:hover{ color:var(--ink); }
+
+/* Background coral */
+.page{
+  min-height:100vh;
+  position:relative;
+}
+.page::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("brain-coral.png");
+  background-repeat:no-repeat;
+  background-position:center bottom;
+  background-size:cover;
+  opacity:0.15;
+  pointer-events:none;
+  z-index:-1;
+  animation: coralFloat 20s ease-in-out infinite alternate;
+}
+@keyframes coralFloat{
+  0%{ transform:translateY(8px) scale(1); }
+  100%{ transform:translateY(-8px) scale(1.02); }
+}
+
+/* ===== App Shell Layout ===== */
+.app{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 18px;
+  background:rgba(245,245,243,0.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.topbar-title{
+  font-size:0.92rem;
+  color:var(--muted);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Icon buttons (top right like MECLabs) */
+.icon-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.92);
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+  text-decoration:none !important;
+  color:var(--ink);
+  font-size:0.85rem;
+  cursor:pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+.icon-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(201,106,60,0.35);
+  box-shadow:0 14px 30px rgba(0,0,0,0.10);
+}
+.icon-btn svg{ width:18px; height:18px; }
+
+/* ===== Coral Contact Icon ===== */
+.brand-icon.coral-logo{
+  position:relative;
+  width:64px;
+  height:64px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  text-decoration:none !important;
+  transition: transform 0.18s ease, filter 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+.brand-icon.coral-logo svg{ width:48px; height:48px; }
+
+.brand-icon.coral-logo:hover{
+  transform: translateY(-2px) scale(1.12);
+  background: rgba(201,106,60,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  filter: drop-shadow(0 0 16px rgba(201,106,60,0.45));
+}
+.brand-icon.coral-logo::after{
+  content:"CONTACT";
+  position:absolute;
+  left: calc(100% + 10px);
+  top:50%;
+  transform: translateY(-50%) translateX(-6px);
+  opacity:0;
+  pointer-events:none;
+  font-size:0.65rem;
+  letter-spacing:0.18em;
+  padding:0.35rem 0.6rem;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.brand-icon.coral-logo:hover::after{
+  opacity:1;
+  transform: translateY(-50%) translateX(0);
+}
+@media (max-width:720px){
+  .brand-icon.coral-logo::after{ display:none; }
+}
+
+/* ===== Main split: left rail + canvas ===== */
+.shell{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  padding: 16px 18px 120px; /* space for bottom dock */
+  flex:1;
+}
+
+.rail{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.72);
+  border-radius: 14px;
+  overflow:hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+
+.rail-header{
+  padding:14px 14px 12px;
+  border-bottom:1px solid var(--border);
+  background: rgba(255,255,255,0.9);
+}
+.rail-header .rail-title{
+  font-weight:700;
+  font-size:0.95rem;
+  margin-bottom:2px;
+}
+.rail-header .rail-sub{
+  font-size:0.78rem;
+  color:var(--muted);
+}
+
+.rail-nav{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.rail-link{
+  text-decoration:none !important;
+  color:var(--ink);
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 10px;
+  border-radius: 12px;
+  border:1px solid transparent;
+  transition: background 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+.rail-link:hover{
+  background: rgba(245,245,243,0.9);
+  border-color: rgba(201,106,60,0.25);
+  transform: translateY(-1px);
+}
+.rail-link.active{
+  background: rgba(235,242,248,0.55);
+  border-color: rgba(201,106,60,0.35);
+}
+.rail-link .kicker{
+  font-size:0.68rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  min-width:64px;
+  margin-top:2px;
+}
+.rail-link .label{
+  font-size:0.92rem;
+  line-height:1.2;
+}
+
+/* Canvas */
+.canvas{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.72);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+  padding: 22px 22px 26px;
+}
+
+.section{
+  max-width: 880px;
+  margin: 0 auto 2.6rem;
+}
+.eyebrow{
+  font-size:0.75rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.75rem;
+}
+h1,h2,h3{ font-weight:700; letter-spacing:0.01em; }
+h1{ font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 0 0 0.8rem; }
+h2{ font-size: 1.55rem; margin: 1.6rem 0 0.8rem; }
+h3{ font-size: 1.15rem; margin: 1.2rem 0 0.6rem; }
+p{ margin: 0 0 1.0rem; }
+ul{ margin: 1rem 0 1rem 1.2rem; }
+li{ margin-bottom: 0.6rem; color: rgba(32,32,30,0.92); }
+
+/* Glass hero */
+.about-hero{
+  width:100%;
+  max-width: 980px;
+  margin: 6px auto 18px;
+  padding: 18px 18px 16px;
+  border-radius: 14px;
+  text-align:left;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.about-hero:hover{
+  transform: translateY(-1px);
+  background: rgba(235,242,248,0.22);
+  border-color: rgba(201,106,60,0.28);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.14);
+}
+.hero-sub{
+  color: rgba(32,32,30,0.78);
+  max-width: 72ch;
+}
+
+/* Pill buttons for CTAs (only when you decide it’s a CTA) */
+.cta-link{
+  display:inline-block;
+  padding: 0.52rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: var(--ink);
+  background: rgba(255,255,255,0.92);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.cta-link:hover{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+}
+.hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 12px;
+}
+
+/* Cards */
+.card{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.92);
+  border-radius: 14px;
+  padding: 16px 16px;
+  margin: 14px 0;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+}
+.grid-2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 920px){
+  .shell{ grid-template-columns: 1fr; }
+  .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* Bottom message dock */
+.message-dock{
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: min(820px, calc(100vw - 36px));
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 60;
+  padding: 10px 12px;
+}
+.message-dock a{
+  color: var(--ink);
+  text-decoration: none !important;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.message-placeholder{
+  flex:1;
+  color: rgba(32,32,30,0.55);
+  font-size: 0.95rem;
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: rgba(245,245,243,0.75);
+}
+.dock-icons{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  color: rgba(32,32,30,0.65);
+}
+.dock-icons svg{ width:18px; height:18px; }
+.dock-pills{
+  display:flex;
+  gap:8px;
+  padding: 6px 6px 0;
+}
+.dock-pill{
+  font-size:0.78rem;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.9);
+  color: rgba(32,32,30,0.78);
+}
+
+/* Footer */
+footer{
+  padding: 16px 18px 90px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-align:center;
+}
+.footer-inner{
+  max-width: 980px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
