@@ -366,69 +366,71 @@
             h2 { font-size: 1.3rem; }
         }
 
-       /* === About Page Hero === */
-.hero-section {
-    max-width: 960px;
+/* === About Page Hero (refined, less “billboard”) === */
+.hero-section{
+  max-width: 960px; /* keep your original layout intent */
 }
 
-.about-hero {
-    transition: all 0.28s ease;
-    width: 100%;
-    max-width: 780px;
-    margin: 6vh auto 4rem;
-    padding: 4rem 3rem 3.5rem;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.86);
-    box-shadow: 0 22px 48px rgba(0,0,0,0.07);
-    text-align: center;
-}
-.about-hero:hover {
-    background: rgba(180, 200, 220, 0.92);
-}    
-.about-hero-title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: 0.45em;
-    text-align: center;
-    line-height: 1.5;
-    margin-top: 4px;
-    margin-bottom: 12px;
+.about-hero{
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  width: 100%;
+  max-width: 720px;
+  margin: 5vh auto 3rem;
+  padding: 2.6rem 2.4rem 2.2rem;
+
+  border-radius: 22px;                 /* key change: no giant pill */
+  border: 1px solid rgba(0,0,0,0.08);  /* subtler border */
+  background: rgba(255,255,255,0.78);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  text-align: center;
 }
 
-.about-hero-subtitle {
-    font-size: 1rem;
-    text-align: center;
-    font-weight: 400;
-    opacity: 0.9;
+.about-hero:hover{
+  transform: translateY(-2px);
+  background: rgba(235, 242, 248, 0.90); /* refined, quiet hover */
+  border-color: rgba(201,106,60,0.22);   /* slight brand hint */
+  box-shadow: 0 18px 44px rgba(0,0,0,0.10);
+}
+
+.about-hero-title{
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1.15;
+  margin: 0 0 0.8rem;
+}
+
+.about-hero-subtitle{
+  font-size: 0.95rem;
+  font-weight: 400;
+  opacity: 0.85;
+  max-width: 60ch;
+  margin: 0 auto;
 }
 
 /* Bigger on very wide screens */
-@media (min-width: 1280px) {
-    .about-hero {
-        max-width: 900px;
-        padding: 4.2rem 3.4rem 3.6rem;
-    }
-    .about-hero-title {
-        font-size: 3.1rem;
-    }
+@media (min-width: 1280px){
+  .about-hero{
+    max-width: 760px;
+    padding: 2.8rem 2.6rem 2.3rem;
+  }
 }
 
 /* Mobile tweaks */
-@media (max-width: 600px) {
-    .about-hero {
-        padding: 2.4rem 1.6rem 2.3rem;
-        margin: 5vh auto 2.4rem;
-    }
-    .about-hero-title {
-        font-size: 1.8rem;
-        letter-spacing: 0.32em;
-    }
-    .about-hero-subtitle {
-        font-size: 0.9rem;
-    }
-
-        }
+@media (max-width: 600px){
+  .about-hero{
+    padding: 2.0rem 1.4rem 1.8rem;
+    margin: 4vh auto 2.2rem;
+    border-radius: 18px;
+  }
+  .about-hero-title{
+    font-size: 1.45rem;
+    letter-spacing: 0.18em;
+  }
+  .about-hero-subtitle{
+    font-size: 0.9rem;
+  }
+}
 /* --- Hero CTA Grid --- */
 .cta-grid {
     display: grid;
