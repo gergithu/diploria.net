@@ -12,15 +12,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-    /* 1. Coral logo hover */
-.logo-hover {
-    transition: transform 0.25s ease, filter 0.25s ease;
-    transform-origin: center center;
+   /* === CORAL / REEF CONTACT ICON (bigger + obvious hover + label) === */
+.brand-icon.coral-logo{
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
-.logo-hover:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
+.brand-icon.coral-logo svg{
+  width: 48px;
+  height: 48px;
+}
+
+.brand-icon.coral-logo:hover{
+  transform: translateY(-2px) scale(1.12);
+  background: rgba(201, 106, 60, 0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  filter: drop-shadow(0 0 16px rgba(201,106,60,0.45));
+}
+
+.brand-icon.coral-logo:focus-visible{
+  outline: 2px solid rgba(201,106,60,0.65);
+  outline-offset: 3px;
+}
+
+.brand-icon.coral-logo::after{
+  content: "CONTACT";
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  opacity: 0;
+  pointer-events: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.brand-icon.coral-logo:hover::after{
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 720px){
+  .brand-icon.coral-logo::after{ display:none; }
 }
 
 /* 2. Top navigation link hover underline */
@@ -477,7 +523,10 @@
 
     <!-- HEADER -->
     <header>
-        <a href="mailto:alias.fanning298@silomails.com" class="brand-icon coral-logo">
+       <a href="mailto:alias.fanning298@silomails.com"
+   class="brand-icon coral-logo logo-hover"
+   aria-label="Contact Diploria (opens your email app)"
+   title="Contact (opens your email app)">
             <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
