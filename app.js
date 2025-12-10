@@ -1,304 +1,221 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diploria — Methodology</title>
-  <meta name="description" content="Diploria methodology: verified synthesis, traceable reasoning, and decision-grade outputs." />
+/* Diploria shared behavior (all pages) */
+(() => {
+  "use strict";
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  document.addEventListener("DOMContentLoaded", () => {
+    wireShareButtons();
+    wireRailSectionTracking();
+    wireAnchorSmoothScroll();
+    initCostChartIfPresent();
+  });
 
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="app.js" defer></script>
-</head>
+  // ---------------------------
+  // Share button (data-share)
+  // ---------------------------
+  function wireShareButtons() {
+    const buttons = document.querySelectorAll("[data-share]");
+    if (!buttons.length) return;
 
-<body>
-<div class="page app">
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const url = window.location.href;
+        const title = document.title || "Diploria";
 
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="topbar-left">
-      <a href="mailto:alias.fanning298@silomails.com"
-         class="brand-icon coral-logo"
-         aria-label="Contact Diploria (opens your email app)"
-         title="Contact (opens your email app)">
-        <!-- Coral SVG -->
-        <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
-              <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
-            </radialGradient>
-          </defs>
-          <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.3" stroke-width="1.5" />
-          <circle cx="32" cy="32" r="8" fill="url(#polyp-core)" />
-          <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
-            <path id="tentacle" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
-            <use href="#tentacle" transform="rotate(30)" />
-            <use href="#tentacle" transform="rotate(60)" />
-            <use href="#tentacle" transform="rotate(90)" />
-            <use href="#tentacle" transform="rotate(120)" />
-            <use href="#tentacle" transform="rotate(150)" />
-            <use href="#tentacle" transform="rotate(180)" />
-            <use href="#tentacle" transform="rotate(210)" />
-            <use href="#tentacle" transform="rotate(240)" />
-            <use href="#tentacle" transform="rotate(270)" />
-            <use href="#tentacle" transform="rotate(300)" />
-            <use href="#tentacle" transform="rotate(330)" />
-          </g>
-        </svg>
-      </a>
-
-      <div class="topbar-title">Diploria • Methodology</div>
-    </div>
-
-    <div class="top-actions">
-      <a class="icon-btn"
-         href="mailto:alias.fanning298@silomails.com?subject=Diploria%20Support&body=Hello%20%E2%80%94%0A%0AI%20have%20a%20question%3A%0A%0A"
-         title="Contact Support">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        Contact Support
-      </a>
-
-      <button class="icon-btn" type="button" data-share title="Share this page">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M16 8a3 3 0 10-2.8-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <path d="M8 12l8-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <path d="M8 12l8 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <path d="M6 14a3 3 0 100-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <path d="M18 20a3 3 0 10-2-5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-        </svg>
-        Share
-      </button>
-
-      <a class="icon-btn" href="index.html" title="Home">Home</a>
-      <a class="icon-btn" href="privacy.html" title="Privacy & Legal">Privacy</a>
-    </div>
-  </header>
-
-  <!-- SHELL -->
-  <div class="shell">
-    <!-- LEFT RAIL -->
-    <aside class="rail">
-      <div class="rail-header">
-        <div class="rail-title">Chapters</div>
-        <div class="rail-sub">Scroll and work through it.</div>
-      </div>
-
-      <nav class="rail-nav">
-        <a class="rail-link" href="#top">
-          <div class="kicker">00</div>
-          <div class="label">Top</div>
-        </a>
-
-        <a class="rail-link" href="#approach">
-          <div class="kicker">01</div>
-          <div class="label">How it works</div>
-        </a>
-
-        <a class="rail-link" href="#proof">
-          <div class="kicker">02</div>
-          <div class="label">Proof</div>
-        </a>
-
-        <a class="rail-link" href="#applications">
-          <div class="kicker">03</div>
-          <div class="label">Applications</div>
-        </a>
-
-        <a class="rail-link" href="privacy.html">
-          <div class="kicker">↗</div>
-          <div class="label">Privacy & Legal</div>
-        </a>
-      </nav>
-    </aside>
-
-    <!-- MAIN CANVAS -->
-    <main class="canvas" id="top">
-
-      <!-- HERO -->
-      <section class="section">
-        <div class="about-hero">
-          <div class="eyebrow">AI-Accelerated Research</div>
-          <h1>Decision-grade clarity from messy information.</h1>
-          <p class="hero-sub">
-            Diploria is a practical workflow for small teams and individuals who need accurate synthesis, verification, and a clear next step — without building a full research department.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#proof" class="cta-link">View proof →</a>
-
-            <a class="cta-link"
-               href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AIf%20you%20answer%20A%E2%80%93C%2C%20I%20can%20respond%20usefully.%20Everything%20else%20is%20optional.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
-              Open a Guided Email →
-            </a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 style="margin-top:0;">What you get</h3>
-          <ul>
-            <li><strong>Synthesis:</strong> a clean brief from scattered inputs.</li>
-            <li><strong>Verification:</strong> contradictions flagged; assumptions separated from facts.</li>
-            <li><strong>Structure:</strong> timeline, issue map, options, next steps.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- HOW IT WORKS -->
-      <section id="approach" class="section">
-        <div class="eyebrow">How it works</div>
-        <h2>Fast drafts. Slower judgment. Traceable reasoning.</h2>
-
-        <div class="card">
-          <p><strong>1) Input:</strong> You bring the messy situation: documents, notes, links, constraints.</p>
-          <p><strong>2) Acceleration:</strong> AI extracts, summarizes, and organizes quickly.</p>
-          <p><strong>3) Verification:</strong> cross-checking, contradiction hunting, source discipline.</p>
-          <p><strong>4) Output:</strong> decision artifacts you can act on (or hand to counsel/staff).</p>
-        </div>
-      </section>
-
-      <!-- PROOF -->
-      <section id="proof" class="section">
-        <div class="eyebrow">Proof</div>
-        <h2>A year-long legal project — built and managed end-to-end.</h2>
-
-        <p>
-          I used this method on a real, high-stakes legal matter over a full year. The work required careful handling of messy records, strict attention to detail, and writing that could survive scrutiny.
-        </p>
-        <p>
-          The point isn’t “AI is magic.” The point is that <strong>AI plus verification</strong> can produce professional-grade research outputs when the workflow is disciplined.
-        </p>
-
-        <div class="card">
-          <h3 style="margin-top:0;">What I did (the differentiator)</h3>
-          <ul>
-            <li><strong>Ran the project</strong>: self-directed, deadline-driven, no support staff.</li>
-            <li><strong>Processed dense records</strong> and converted them into usable artifacts.</li>
-            <li><strong>Built a traceable timeline + issue map</strong> to surface contradictions and unknowns.</li>
-            <li><strong>Drafted formal correspondence and materials</strong> with professional structure.</li>
-            <li><strong>Prepared through simulation</strong>: pressure-tested answers and likely questions.</li>
-            <li><strong>Cross-verified across multiple AI systems</strong> to reduce tool bias and error risk.</li>
-          </ul>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3 style="margin-top:0;">Constraints</h3>
-            <ul>
-              <li>No law firm. No associate team.</li>
-              <li>Messy inputs: gaps, conflicts, timestamps.</li>
-              <li>Low tolerance for sloppy reasoning.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 style="margin-top:0;">Outputs</h3>
-            <ul>
-              <li>Decision memos (short, usable, defensible).</li>
-              <li>Timeline tables with contradictions flagged.</li>
-              <li>Issue maps: facts vs assumptions vs unknowns.</li>
-              <li>Draft correspondence and structured briefs.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 style="margin-top:0;">Cost framing (illustrative)</h3>
-          <p style="margin-bottom:0.6rem;">
-            This chart is not a sales claim — it’s a simple illustration of why small teams care about verified synthesis.
-          </p>
-          <div style="position:relative; width:100%; max-width:420px; margin:0.8rem auto; height:280px;">
-            <canvas id="costChart"></canvas>
-          </div>
-        </div>
-      </section>
-
-      <!-- APPLICATIONS -->
-      <section id="applications" class="section">
-        <div class="eyebrow">Applications</div>
-        <h2>Where this helps</h2>
-
-        <div class="card">
-          <ul>
-            <li><strong>Lean teams:</strong> research briefs, decision memos, due diligence support.</li>
-            <li><strong>NGOs & community orgs:</strong> grant support, policy synthesis, stakeholder mapping.</li>
-            <li><strong>Individuals:</strong> complex decisions where clarity matters more than volume.</li>
-            <li><strong>Legal-adjacent:</strong> organizing records, drafting correspondence, procedure navigation (not legal advice).</li>
-          </ul>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div><strong>© 2025 Diploria.net</strong></div>
-      <div style="margin-top:6px;">
-        <a href="privacy.html">Privacy & Legal</a> •
-        <a href="mailto:alias.fanning298@silomails.com">Contact</a>
-      </div>
-      <div style="margin-top:6px;">Speed. Verification. Clear Decisions.</div>
-    </div>
-  </footer>
-
-  <!-- Bottom dock -->
-  <div class="message-dock">
-    <a href="mailto:alias.fanning298@silomails.com?subject=Diploria%20%E2%80%94%20Guided%20Email&body=Welcome%20to%20Diploria.%0A%0AAnswer%20A%E2%80%93C%20and%20I%20can%20respond%20usefully.%0A%0AA)%20What%20are%20you%20working%20on%3F%0AB)%20What%20do%20you%20need%20help%20with%3F%0AC)%20What%E2%80%99s%20at%20stake%3F%0A%0AOptional%3A%0A%E2%80%A2%20Timeline%0A%E2%80%A2%20Budget%20sensitivity%0A%E2%80%A2%20Links%20or%20docs%20%28redactions%20fine%29%0A">
-      <div class="message-placeholder">Send a message</div>
-
-      <div class="dock-icons" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M8 12.5l7-7a3.5 3.5 0 115 5l-8.5 8.5a5 5 0 01-7-7l8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 14a3 3 0 003-3V7a3 3 0 10-6 0v4a3 3 0 003 3zm6-3a6 6 0 01-12 0m6 6v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M3 11l18-8-8 18-2-7-8-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </a>
-
-    <div class="dock-pills" aria-hidden="true">
-      <span class="dock-pill">Experts</span>
-      <span class="dock-pill">Apps</span>
-      <span class="dock-pill">Libraries</span>
-    </div>
-  </div>
-
-  <script>
-    const c = document.getElementById('costChart');
-    if (c && window.Chart) {
-      const ctx = c.getContext('2d');
-      new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: ['AI subscription (example)', 'Avoided professional fees (illustrative)'],
-          datasets: [{
-            data: [360, 45000],
-            backgroundColor: ['#c96a3c', '#e1e1da'],
-            borderColor: '#ffffff',
-            borderWidth: 3
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '70%',
-          plugins: { legend: { position: 'bottom' } }
+        // Prefer Web Share API (mobile + some desktop browsers)
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch {
+            // user cancelled or not allowed — fall back to copy
+          }
         }
-      });
-    }
-  </script>
 
-</div>
-</body>
-</html>
+        // Clipboard fallback
+        const ok = await copyToClipboard(url);
+        toast(ok ? "Link copied." : "Couldn’t copy. Select + copy from the address bar.");
+      });
+    });
+  }
+
+  async function copyToClipboard(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      // fall through
+    }
+
+    // Fallback for older browsers
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+
+  // ---------------------------
+  // Rail: highlight section in view
+  // ---------------------------
+  function wireRailSectionTracking() {
+    const railLinks = Array.from(document.querySelectorAll(".rail-link[href^='#']"));
+    if (!railLinks.length) return;
+
+    const targets = railLinks
+      .map((a) => {
+        const id = a.getAttribute("href").slice(1);
+        const el = document.getElementById(id);
+        return el ? { id, el, a } : null;
+      })
+      .filter(Boolean);
+
+    if (!targets.length) return;
+
+    const setActive = (id) => {
+      targets.forEach(({ id: tid, a }) => {
+        a.classList.toggle("active", tid === id);
+      });
+    };
+
+    // IntersectionObserver is smoother than scroll handlers
+    const io = new IntersectionObserver(
+      (entries) => {
+        // pick the most visible entry
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible && visible.target && visible.target.id) {
+          setActive(visible.target.id);
+        }
+      },
+      {
+        root: null,
+        // bias to activate when the section header is in the upper half
+        rootMargin: "-15% 0px -70% 0px",
+        threshold: [0.1, 0.2, 0.35, 0.5, 0.75],
+      }
+    );
+
+    targets.forEach(({ el }) => io.observe(el));
+
+    // If arriving with a hash, mark it active
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const match = targets.find((t) => t.id === id);
+      if (match) setActive(id);
+    }
+  }
+
+  // ---------------------------
+  // Smooth scrolling for in-page anchors
+  // ---------------------------
+  function wireAnchorSmoothScroll() {
+    const anchors = document.querySelectorAll("a[href^='#']");
+    if (!anchors.length) return;
+
+    anchors.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href");
+        if (!href || href.length < 2) return;
+
+        const id = href.slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // update URL without jumping
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+  }
+
+  // ---------------------------
+  // Chart init (methodology page only)
+  // ---------------------------
+  function initCostChartIfPresent() {
+    const canvas = document.getElementById("costChart");
+    if (!canvas) return;
+
+    // prevent double-initialization if you still have an inline chart script somewhere
+    if (canvas.dataset.chartInit === "1") return;
+    canvas.dataset.chartInit = "1";
+
+    // Chart.js must be loaded on the page that has this canvas
+    if (!window.Chart) return;
+
+    const ctx = canvas.getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["AI subscription (example)", "Avoided professional fees (illustrative)"],
+        datasets: [
+          {
+            data: [360, 45000],
+            backgroundColor: ["#c96a3c", "#e1e1da"],
+            borderColor: "#ffffff",
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "70%",
+        plugins: { legend: { position: "bottom" } },
+      },
+    });
+  }
+
+  // ---------------------------
+  // Minimal toast (no CSS dependency)
+  // ---------------------------
+  let toastTimer = null;
+  function toast(message) {
+    clearTimeout(toastTimer);
+
+    let el = document.getElementById("diploria-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "diploria-toast";
+      el.style.position = "fixed";
+      el.style.left = "50%";
+      el.style.bottom = "92px";
+      el.style.transform = "translateX(-50%)";
+      el.style.padding = "10px 12px";
+      el.style.borderRadius = "12px";
+      el.style.border = "1px solid rgba(225,225,218,0.9)";
+      el.style.background = "rgba(255,255,255,0.92)";
+      el.style.boxShadow = "0 14px 30px rgba(0,0,0,0.14)";
+      el.style.fontFamily = "system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif";
+      el.style.fontSize = "0.9rem";
+      el.style.color = "rgba(32,32,30,0.9)";
+      el.style.zIndex = "9999";
+      el.style.opacity = "0";
+      el.style.transition = "opacity 160ms ease, transform 160ms ease";
+      document.body.appendChild(el);
+    }
+
+    el.textContent = message;
+    el.style.opacity = "1";
+    el.style.transform = "translateX(-50%) translateY(-2px)";
+
+    toastTimer = setTimeout(() => {
+      el.style.opacity = "0";
+      el.style.transform = "translateX(-50%) translateY(6px)";
+    }, 1400);
+  }
+})();
