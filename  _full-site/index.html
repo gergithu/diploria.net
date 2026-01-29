@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diploria — Clarity for Complicated Situations</title>
+  <meta name="description" content="Diploria helps you turn a complicated situation into a clear summary, a simple timeline, and what’s still missing — so you know what to do next." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html" aria-label="Diploria Home">
+        <span class="coral-logo" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="polyp-core" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
+                <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
+                <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
+              </radialGradient>
+            </defs>
+            <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.32" stroke-width="1.5" />
+            <circle cx="32" cy="32" r="8" fill="url(#polyp-core)" />
+            <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
+              <path id="t" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
+              <use href="#t" transform="rotate(30)" /><use href="#t" transform="rotate(60)" /><use href="#t" transform="rotate(90)" />
+              <use href="#t" transform="rotate(120)" /><use href="#t" transform="rotate(150)" /><use href="#t" transform="rotate(180)" />
+              <use href="#t" transform="rotate(210)" /><use href="#t" transform="rotate(240)" /><use href="#t" transform="rotate(270)" />
+              <use href="#t" transform="rotate(300)" /><use href="#t" transform="rotate(330)" />
+            </g>
+          </svg>
+        </span>
+
+        <span class="brand-label">
+          <span class="brand-title">Diploria</span>
+          <span class="brand-sub">Clarity you can use</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="top-actions">
+      <a class="btn btn-dark" href="mailto:alias.fanning298@silomails.com?subject=Diploria%20—%20Guided%20Email&body=Hello%20—%0A%0A1)%20What%20are%20you%20dealing%20with%3F%0A2)%20What%20do%20you%20need%20next%3F%0A3)%20Any%20dates%20or%20deadlines%3F%0A%0A(Share%20only%20what%20you’re%20comfortable%20sharing.%20Redactions%20are%20fine.)%0A">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        Contact
+      </a>
+
+      <button class="btn btn-ghost" type="button" data-share title="Share this page">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M16 8a3 3 0 10-2.8-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M8 12l8-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M8 12l8 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M6 14a3 3 0 100-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M18 20a3 3 0 10-2-5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        Share
+      </button>
+
+      <a class="btn" href="workflow.html">Workflow</a>
+      <a class="btn" href="case-study.html">Case Study</a>
+      <a class="btn" href="privacy.html">Privacy</a>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="rail">
+      <div class="rail-header">
+        <div class="rail-title">Start here</div>
+        <div class="rail-sub">Simple map of the site.</div>
+      </div>
+
+      <nav class="rail-nav">
+        <a class="rail-link" href="#top"><div class="kicker">00</div><div class="label">Overview</div></a>
+        <a class="rail-link" href="#who"><div class="kicker">01</div><div class="label">Who this helps</div></a>
+        <a class="rail-link" href="#deliver"><div class="kicker">02</div><div class="label">What you get</div></a>
+        <a class="rail-link" href="workflow.html"><div class="kicker">↗</div><div class="label">Workflow</div></a>
+        <a class="rail-link" href="case-study.html"><div class="kicker">↗</div><div class="label">Case Study</div></a>
+        <a class="rail-link" href="privacy.html"><div class="kicker">↗</div><div class="label">Privacy</div></a>
+      </nav>
+    </aside>
+
+    <main class="canvas" id="top">
+      <section class="section">
+        <div class="hero">
+          <div class="eyebrow">Practical help</div>
+          <h1>Turn a complicated situation into something you can act on.</h1>
+          <p class="hero-sub">
+            I help you organize what’s happening, what matters, and what’s missing — so you can make the next decision confidently, and explain it clearly to someone else (a provider, a landlord, an insurer, a government office, HR, or even a family member).
+          </p>
+
+          <div class="hero-actions">
+            <a class="pill pill-primary" href="mailto:alias.fanning298@silomails.com?subject=Diploria%20—%20Guided%20Email&body=Hello%20—%0A%0A1)%20What%20are%20you%20dealing%20with%3F%0A2)%20What%20do%20you%20need%20next%3F%0A3)%20Any%20dates%20or%20deadlines%3F%0A%0A(Share%20only%20what%20you’re%20comfortable%20sharing.%20Redactions%20are%20fine.)%0A">
+              Open a Guided Email →
+            </a>
+            <a class="pill" href="case-study.html">See the Case Study →</a>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" id="deliver">
+            <h3 style="margin-top:0;">What you get</h3>
+            <ul>
+              <li><strong>A clear summary</strong> (plain language).</li>
+              <li><strong>A simple timeline</strong> (what happened, when).</li>
+              <li><strong>A short “missing pieces” list</strong> (what to request / confirm next).</li>
+              <li><strong>Optional:</strong> a draft message or letter you can send.</li>
+            </ul>
+          </div>
+
+          <div class="card" id="who">
+            <h3 style="margin-top:0;">Who this helps</h3>
+            <ul>
+              <li><strong>Personal processes:</strong> benefits, insurance disputes, immigration, housing/tenancy, consumer complaints, HR issues.</li>
+              <li><strong>Families:</strong> aging-parent logistics, paperwork, coordinating with siblings/providers.</li>
+              <li><strong>Small operators:</strong> contractors, consultants, small landlords, nonprofits — when you need a clear brief and next steps.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">What I’m promising (and what I’m not)</h3>
+          <p>
+            I don’t promise “winning.” I promise <strong>clarity, structure, and usable writing</strong> — so you’re not improvising, rambling, or getting pushed around by paperwork.
+          </p>
+          <p style="margin-bottom:0;">
+            If your situation requires legal advice, I’ll say so. This is organization, drafting, and decision-support — not representation.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Next step</h3>
+          <p style="margin-bottom:0.6rem;">
+            Send a short email with what you’re dealing with and any deadlines. If you have documents, you can redact names and identifiers.
+          </p>
+          <a class="pill" href="workflow.html">See the workflow →</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>© <span data-year></span> Diploria.net</strong></div>
+      <div class="footer-links">
+        <a href="index.html">Home</a> •
+        <a href="workflow.html">Workflow</a> •
+        <a href="case-study.html">Case Study</a> •
+        <a href="privacy.html">Privacy</a> •
+        <a href="mailto:alias.fanning298@silomails.com">Contact</a>
+      </div>
+      <div style="margin-top:8px;">Clear writing. Clean timelines. Better next steps.</div>
+    </div>
+  </footer>
+
+  <div class="dock">
+    <div class="dock-row">
+      <div class="dock-left">Need clarity fast? Start with the guided email.</div>
+      <div class="dock-actions">
+        <a class="btn btn-dark" href="mailto:alias.fanning298@silomails.com?subject=Diploria%20—%20Guided%20Email&body=Hello%20—%0A%0A1)%20What%20are%20you%20dealing%20with%3F%0A2)%20What%20do%20you%20need%20next%3F%0A3)%20Any%20dates%20or%20deadlines%3F%0A%0A(Share%20only%20what%20you’re%20comfortable%20sharing.%20Redactions%20are%20fine.)%0A">Email</a>
+        <button class="btn" type="button" data-share>Share</button>
+        <button class="btn" type="button" data-copylink>Copy link</button>
+        <button class="btn btn-ghost" type="button" data-top>Top</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+</div>
+</body>
+</html>
