@@ -26,8 +26,7 @@
     html, body{
       height: 100%;
       width: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body{
@@ -37,12 +36,9 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: 40px 20px;
-      min-height: 100vh;
     }
 
     /* Coral background */
@@ -72,7 +68,7 @@
     .container{
       position: relative;
       z-index: 10;
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -195,62 +191,6 @@
       height: 20px;
     }
 
-    /* Tech Facts Section */
-    .tech-facts{
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(225,225,218,0.6);
-    }
-
-    .tech-facts-title{
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 14px;
-      opacity: 0.7;
-    }
-
-    .tech-fact{
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: rgba(119,119,108,0.85);
-      font-style: italic;
-      margin: 8px 0;
-      padding: 6px 0;
-    }
-
-    .tech-fact.featured{
-      font-size: 0.88rem;
-      color: var(--accent);
-      opacity: 0.9;
-      font-weight: 500;
-      margin: 12px 0 8px;
-    }
-
-    .tech-stack{
-      margin-top: 20px;
-      padding: 14px 18px;
-      background: rgba(245,245,243,0.5);
-      border-radius: 12px;
-      border: 1px solid rgba(225,225,218,0.8);
-    }
-
-    .tech-stack-label{
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      margin-bottom: 6px;
-      opacity: 0.6;
-    }
-
-    .tech-stack-content{
-      font-size: 0.78rem;
-      color: rgba(31,31,29,0.7);
-      line-height: 1.5;
-    }
-
     /* Responsive */
     @media (max-width: 640px){
       .card{
@@ -269,9 +209,6 @@
       }
       .message{
         font-size: 1rem;
-      }
-      .tech-fact{
-        font-size: 0.75rem;
       }
     }
   </style>
@@ -332,46 +269,7 @@
           reef@diploria.net
         </a>
       </div>
-
-      <!-- Tech Facts Section -->
-      <div class="tech-facts">
-        <div class="tech-facts-title">Research Notes</div>
-        
-        <div class="tech-fact featured">
-          "Can anyone see the deployment of diploria.net prior to studying the need for Kubernetes?"
-        </div>
-
-        <div class="tech-fact">
-          Built with HTML, hosted on Pages, and over-engineered by exactly zero microservices.
-        </div>
-
-        <div class="tech-fact">
-          No containers were harmed in the making of this website.
-        </div>
-
-        <div class="tech-fact">
-          Serving clarity since 2024. Kubernetes-free since forever.
-        </div>
-
-        <div class="tech-stack">
-          <div class="tech-stack-label">Tech Stack</div>
-          <div class="tech-stack-content">
-            Brain coral metaphors + common sense. Docker optional. This site costs $0/month to run.
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-
-  <!-- Hidden comment for source code viewers -->
-  <!-- 
-    Fun fact: This entire site is deployed without Kubernetes. 
-    Sometimes the simplest solution is the right solution. 🪸
-    
-    Tech philosophy: Simple tools for real problems.
-    Over-engineering is a choice. We choose clarity.
-  -->
-
 </body>
 </html>
