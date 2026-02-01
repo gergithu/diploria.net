@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intake Form — Diploria</title>
+  <meta name="description" content="Submit your situation for structured analysis and clarity. Diploria helps you organize complex situations into clear, actionable information." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f5f5f3;
+      --ink: #1f1f1d;
+      --muted: #77776c;
+      --accent: #c96a3c;
+      --border: #e1e1da;
+      --panel: rgba(255,255,255,0.92);
+      --shadow: 0 24px 60px rgba(0,0,0,0.15);
+      --radius: 20px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    
+    html, body{
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    body{
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    /* Coral background */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("brain-coral.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      opacity: 0.20;
+      filter: saturate(1.1) brightness(1.05);
+      z-index: 0;
+    }
+
+    /* Vignette overlay */
+    body::after{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(31,31,29,0.15) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .container{
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px 42px;
+      margin-bottom: 20px;
+    }
+
+    .coral-icon{
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      background: rgba(201,106,60,0.08);
+      border: 2px solid rgba(201,106,60,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 40px rgba(201,106,60,0.20);
+    }
+
+    .coral-icon svg{
+      width: 64px;
+      height: 64px;
+    }
+
+    .brand-name{
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .tagline{
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+
+    .intro-text{
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(31,31,29,0.75);
+      margin-bottom: 32px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .form-section{
+      margin-bottom: 28px;
+    }
+
+    .form-label{
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .form-label .required{
+      color: var(--accent);
+      margin-left: 3px;
+    }
+
+    .form-help{
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .form-input,
+    .form-textarea{
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+      font-family: 'Noto Sans JP', system-ui, sans-serif;
+      color: var(--ink);
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      line-height: 1.6;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus{
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 0 0 3px rgba(201,106,60,0.1);
+    }
+
+    .form-textarea{
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-textarea.large{
+      min-height: 160px;
+    }
+
+    .checkbox-container{
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 24px 0 32px;
+      padding: 16px;
+      background: rgba(201,106,60,0.04);
+      border-radius: 12px;
+      border: 1px solid rgba(201,106,60,0.15);
+    }
+
+    .checkbox-container input[type="checkbox"]{
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-container label{
+      font-size: 0.88rem;
+      color: rgba(31,31,29,0.85);
+      cursor: pointer;
+      line-height: 1.6;
+    }
+
+    .submit-btn{
+      width: 100%;
+      padding: 16px 32px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: 'Noto Sans JP', system-ui, sans-serif;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(201,106,60,0.3);
+    }
+
+    .submit-btn:hover{
+      background: #b35a2f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(201,106,60,0.4);
+    }
+
+    .submit-btn:active{
+      transform: translateY(0);
+    }
+
+    .submit-btn:disabled{
+      background: var(--muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Success/Error Messages */
+    .message-box{
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: none;
+    }
+
+    .message-box.show{
+      display: block;
+    }
+
+    .message-box.success{
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #166534;
+    }
+
+    .message-box.error{
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #991b1b;
+    }
+
+    .message-title{
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .message-text{
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .case-id{
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: monospace;
+      margin: 12px 0;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .back-link{
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover{
+      color: #b35a2f;
+      text-decoration: underline;
+    }
+
+    /* Loading state */
+    .loading-spinner{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
+    @keyframes spin{
+      to{ transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px){
+      body{
+        padding: 20px 16px;
+      }
+      .card{
+        padding: 32px 24px;
+      }
+      .brand-name{
+        font-size: 1.8rem;
+      }
+      .coral-icon{
+        width: 80px;
+        height: 80px;
+      }
+      .coral-icon svg{
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <!-- Header -->
+      <div class="coral-icon">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="polyp-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
+              <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
+              <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
+            </radialGradient>
+          </defs>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.35" stroke-width="1.5" />
+          <circle cx="32" cy="32" r="8" fill="url(#polyp-glow)" />
+          <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
+            <path id="tentacle" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
+            <use href="#tentacle" transform="rotate(30)" />
+            <use href="#tentacle" transform="rotate(60)" />
+            <use href="#tentacle" transform="rotate(90)" />
+            <use href="#tentacle" transform="rotate(120)" />
+            <use href="#tentacle" transform="rotate(150)" />
+            <use href="#tentacle" transform="rotate(180)" />
+            <use href="#tentacle" transform="rotate(210)" />
+            <use href="#tentacle" transform="rotate(240)" />
+            <use href="#tentacle" transform="rotate(270)" />
+            <use href="#tentacle" transform="rotate(300)" />
+            <use href="#tentacle" transform="rotate(330)" />
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="brand-name">Diploria</h1>
+      <p class="tagline">Guided Intake</p>
+      <p class="intro-text">
+        This structured form helps you organize your situation so we can provide the most useful help. 
+        Takes about 5 minutes.
+      </p>
+
+      <!-- Success Message (hidden by default) -->
+      <div id="successMessage" class="message-box success">
+        <div class="message-title">✓ Submission Received</div>
+        <div class="message-text">Your case ID: <span class="case-id" id="caseId"></span></div>
+        <div class="message-text">
+          <strong>What happens next:</strong><br>
+          • You'll receive a confirmation email<br>
+          • Geer will review within 24 hours<br>
+          • You'll get a response at your email address
+        </div>
+        <div class="message-text" style="margin-top:12px; font-size:0.85rem; opacity:0.8;">
+          Questions? Email reef@diploria.net
+        </div>
+        <a href="/" class="back-link">← Back to home</a>
+      </div>
+
+      <!-- Error Message (hidden by default) -->
+      <div id="errorMessage" class="message-box error">
+        <div class="message-title">⚠ Submission Error</div>
+        <div class="message-text" id="errorText"></div>
+        <div class="message-text" style="margin-top:12px; font-size:0.88rem;">
+          Please try again, or email us directly at reef@diploria.net
+        </div>
+      </div>
+
+      <!-- Intake Form -->
+      <form id="intakeForm">
+        <!-- Question 1: Situation -->
+        <div class="form-section">
+          <label for="situation" class="form-label">
+            1. What are you dealing with?<span class="required">*</span>
+          </label>
+          <span class="form-help">Describe your situation in your own words. What's happening?</span>
+          <textarea 
+            id="situation" 
+            name="situation" 
+            class="form-textarea large" 
+            required
+            placeholder="e.g., Insurance company denied my claim for..."
+          ></textarea>
+        </div>
+
+        <!-- Question 2: Need -->
+        <div class="form-section">
+          <label for="need" class="form-label">
+            2. What do you need help with?<span class="required">*</span>
+          </label>
+          <span class="form-help">What specific help would be most useful?</span>
+          <textarea 
+            id="need" 
+            name="need" 
+            class="form-textarea" 
+            required
+            placeholder="e.g., I need help organizing a timeline and drafting an appeal letter..."
+          ></textarea>
+        </div>
+
+        <!-- Question 3: Deadline -->
+        <div class="form-section">
+          <label for="deadline" class="form-label">
+            3. Any deadlines or time constraints?
+          </label>
+          <span class="form-help">E.g., "Hearing on Feb 15" or "None"</span>
+          <input 
+            type="text" 
+            id="deadline" 
+            name="deadline" 
+            class="form-input"
+            placeholder="No deadline / Hearing on..."
+          />
+        </div>
+
+        <!-- Question 4: Stakes -->
+        <div class="form-section">
+          <label for="stakes" class="form-label">
+            4. What's at stake?
+          </label>
+          <span class="form-help">What's important about this? What happens if it's not resolved?</span>
+          <textarea 
+            id="stakes" 
+            name="stakes" 
+            class="form-textarea"
+            placeholder="e.g., Without coverage, I can't afford the surgery..."
+          ></textarea>
+        </div>
+
+        <!-- Question 5: Contact Info -->
+        <div class="form-section">
+          <label class="form-label">5. How can we reach you?</label>
+          
+          <div style="margin-bottom:16px;">
+            <label for="contact_name" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">
+              Name<span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="contact_name" 
+              name="contact_name" 
+              class="form-input"
+              required
+              placeholder="Your name"
+            />
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label for="contact_email" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">
+              Email<span class="required">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="contact_email" 
+              name="contact_email" 
+              class="form-input"
+              required
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label for="contact_phone" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">
+              Phone <span style="font-weight:400; color:var(--muted);">(optional)</span>
+            </label>
+            <input 
+              type="tel" 
+              id="contact_phone" 
+              name="contact_phone" 
+              class="form-input"
+              placeholder="555-0123"
+            />
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="disclaimer" name="disclaimer" required />
+          <label for="disclaimer">
+            I understand this is not legal advice and that Diploria provides research and organizational assistance.
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Submit Intake Form
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('intakeForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
+    const caseId = document.getElementById('caseId');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Disable button and show loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span>Submitting...';
+
+      // Hide any previous messages
+      successMessage.classList.remove('show');
+      errorMessage.classList.remove('show');
+
+      // Get form data
+      const formData = {
+        situation: document.getElementById('situation').value.trim(),
+        need: document.getElementById('need').value.trim(),
+        deadline: document.getElementById('deadline').value.trim(),
+        stakes: document.getElementById('stakes').value.trim(),
+        contact_name: document.getElementById('contact_name').value.trim(),
+        contact_email: document.getElementById('contact_email').value.trim(),
+        contact_phone: document.getElementById('contact_phone').value.trim()
+      };
+
+      try {
+        // Send to API
+        const response = await fetch('https://diploria-intake-api.geerjan.workers.dev', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success message
+          caseId.textContent = result.case_id;
+          successMessage.classList.add('show');
+          
+          // Hide form
+          form.style.display = 'none';
+
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // Show error message
+          errorText.textContent = result.message || 'Something went wrong. Please try again.';
+          errorMessage.classList.add('show');
+          
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Submit Intake Form';
+
+          // Scroll to error
+          errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        errorText.textContent = 'Network error. Please check your connection and try again.';
+        errorMessage.classList.add('show');
+        
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Intake Form';
+
+        // Scroll to error
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>
