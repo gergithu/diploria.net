@@ -45,16 +45,16 @@
       pointer-events: none;
     }
 
-    /* Moderate overlay for text readability while keeping coral visible */
+    /* Strong overlay to make coral very opaque/faded */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(255,255,255,0.45) 0%,
-        rgba(255,255,255,0.50) 50%,
-        rgba(255,255,255,0.45) 100%
+        rgba(255,255,255,0.70) 0%,
+        rgba(255,255,255,0.75) 50%,
+        rgba(255,255,255,0.70) 100%
       );
       z-index: 0;
       pointer-events: none;
@@ -208,7 +208,7 @@
       color: #3a3a3a;
       line-height: 1.65;
       font-size: 14px;
-      font-style: italic;
+      font-style: normal;
       text-shadow: 0 1px 2px rgba(255,255,255,0.8);
     }
 
@@ -217,7 +217,7 @@
       color: #666;
       font-size: 13px;
       line-height: 1.65;
-      font-style: italic;
+      font-style: normal;
       text-shadow: 0 1px 2px rgba(255,255,255,0.8);
     }
 
