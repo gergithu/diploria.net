@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intake Form — Diploria</title>
-  <meta name="description" content="Submit your situation for structured analysis and clarity. Diploria helps you organize complex situations into clear, actionable information." />
+  <meta name="description" content="Submit your situation for structured analysis. Diploria helps you organize complexity into clarity." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -33,7 +33,7 @@
     body{
       background: var(--bg);
       color: var(--ink);
-      font-family: 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       display: flex;
@@ -50,21 +50,20 @@
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("brain-coral.png");
+      background-image: url("images/brain-coral.jpeg");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
-      opacity: 0.20;
-      filter: saturate(1.1) brightness(1.05);
+      filter: saturate(1.15) contrast(1.08) brightness(1.15);
       z-index: 0;
     }
 
-    /* Vignette overlay */
+    /* Light overlay for readability */
     body::after{
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, transparent 0%, rgba(31,31,29,0.15) 100%);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.70) 0%, rgba(255,255,255,0.75) 50%, rgba(255,255,255,0.70) 100%);
       z-index: 1;
       pointer-events: none;
     }
@@ -72,7 +71,7 @@
     .container{
       position: relative;
       z-index: 10;
-      max-width: 720px;
+      max-width: 760px;
       width: 100%;
       margin: 0 auto;
     }
@@ -88,28 +87,10 @@
       margin-bottom: 20px;
     }
 
-    .coral-icon{
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 28px;
-      border-radius: 50%;
-      background: rgba(201,106,60,0.08);
-      border: 2px solid rgba(201,106,60,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 40px rgba(201,106,60,0.20);
-    }
-
-    .coral-icon svg{
-      width: 64px;
-      height: 64px;
-    }
-
     .brand-name{
       font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
       color: var(--ink);
       text-align: center;
@@ -155,7 +136,7 @@
       font-size: 0.82rem;
       color: var(--muted);
       margin-bottom: 10px;
-      font-style: italic;
+      line-height: 1.5;
     }
 
     .form-input,
@@ -163,9 +144,9 @@
       width: 100%;
       padding: 14px 16px;
       font-size: 0.95rem;
-      font-family: 'Noto Sans JP', system-ui, sans-serif;
+      font-family: Inter, system-ui, sans-serif;
       color: var(--ink);
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.85);
       border: 1px solid var(--border);
       border-radius: 12px;
       transition: all 0.2s ease;
@@ -176,17 +157,17 @@
     .form-textarea:focus{
       outline: none;
       border-color: var(--accent);
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.98);
       box-shadow: 0 0 0 3px rgba(201,106,60,0.1);
     }
 
     .form-textarea{
       resize: vertical;
-      min-height: 120px;
+      min-height: 140px;
     }
 
     .form-textarea.large{
-      min-height: 160px;
+      min-height: 180px;
     }
 
     .checkbox-container{
@@ -219,7 +200,7 @@
       padding: 16px 32px;
       font-size: 1.05rem;
       font-weight: 700;
-      font-family: 'Noto Sans JP', system-ui, sans-serif;
+      font-family: Inter, system-ui, sans-serif;
       color: white;
       background: var(--accent);
       border: none;
@@ -335,14 +316,6 @@
       .brand-name{
         font-size: 1.8rem;
       }
-      .coral-icon{
-        width: 80px;
-        height: 80px;
-      }
-      .coral-icon svg{
-        width: 52px;
-        height: 52px;
-      }
     }
   </style>
 </head>
@@ -350,40 +323,10 @@
 <body>
   <div class="container">
     <div class="card">
-      <!-- Header -->
-      <div class="coral-icon">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="polyp-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" style="stop-color:#c96a3c;stop-opacity:0.95" />
-              <stop offset="55%" style="stop-color:#c96a3c;stop-opacity:0.6" />
-              <stop offset="100%" style="stop-color:#c96a3c;stop-opacity:0.0" />
-            </radialGradient>
-          </defs>
-          <circle cx="32" cy="32" r="22" fill="none" stroke="#88887d" stroke-opacity="0.35" stroke-width="1.5" />
-          <circle cx="32" cy="32" r="8" fill="url(#polyp-glow)" />
-          <g transform="translate(32 32)" fill="#c96a3c" fill-opacity="0.85" stroke="none">
-            <path id="tentacle" d="M0 -16 C 3 -14, 4 -10, 2.5 -6 C 1 -3, -1 -3, -2.5 -6 C -4 -10, -3 -14, 0 -16 Z" />
-            <use href="#tentacle" transform="rotate(30)" />
-            <use href="#tentacle" transform="rotate(60)" />
-            <use href="#tentacle" transform="rotate(90)" />
-            <use href="#tentacle" transform="rotate(120)" />
-            <use href="#tentacle" transform="rotate(150)" />
-            <use href="#tentacle" transform="rotate(180)" />
-            <use href="#tentacle" transform="rotate(210)" />
-            <use href="#tentacle" transform="rotate(240)" />
-            <use href="#tentacle" transform="rotate(270)" />
-            <use href="#tentacle" transform="rotate(300)" />
-            <use href="#tentacle" transform="rotate(330)" />
-          </g>
-        </svg>
-      </div>
-
       <h1 class="brand-name">Diploria</h1>
-      <p class="tagline">Guided Intake</p>
+      <p class="tagline">Structured Intake</p>
       <p class="intro-text">
-        This structured form helps you organize your situation so we can provide the most useful help. 
-        Takes about 5 minutes.
+        These questions guide you through organizing complex situations. Your responses help us understand what you're facing and how we can best help you establish clarity.
       </p>
 
       <!-- Success Message (hidden by default) -->
@@ -392,9 +335,9 @@
         <div class="message-text">Your case ID: <span class="case-id" id="caseId"></span></div>
         <div class="message-text">
           <strong>What happens next:</strong><br>
-          • You'll receive a confirmation email<br>
-          • Geer will review within 24 hours<br>
-          • You'll get a response at your email address
+          • Geer will review your submission within 24 hours<br>
+          • You'll receive a response at your email address<br>
+          • Initial assessment will identify key information needs
         </div>
         <div class="message-text" style="margin-top:12px; font-size:0.85rem; opacity:0.8;">
           Questions? Email reef@diploria.net
@@ -416,65 +359,79 @@
         <!-- Question 1: Situation -->
         <div class="form-section">
           <label for="situation" class="form-label">
-            1. What are you dealing with?<span class="required">*</span>
+            1. Describe the situation<span class="required">*</span>
           </label>
-          <span class="form-help">Describe your situation in your own words. What's happening?</span>
+          <span class="form-help">What's happening? Who's involved? What's the timeline so far? Include relevant dates, events, or key facts.</span>
           <textarea 
             id="situation" 
             name="situation" 
             class="form-textarea large" 
             required
-            placeholder="e.g., Insurance company denied my claim for..."
+            placeholder="Example: In March 2025, my insurance carrier denied coverage for a surgery that my physician says is medically necessary. The denial letter cited policy section 4.2 but didn't explain why. I've exchanged three emails with their claims department but haven't received clear answers..."
           ></textarea>
         </div>
 
-        <!-- Question 2: Need -->
+        <!-- Question 2: Desired Outcomes -->
         <div class="form-section">
           <label for="need" class="form-label">
-            2. What do you need help with?<span class="required">*</span>
+            2. What outcomes are you trying to achieve?<span class="required">*</span>
           </label>
-          <span class="form-help">What specific help would be most useful?</span>
+          <span class="form-help">What would "resolved" look like? What decisions need to be made? What specific deliverables would be helpful?</span>
           <textarea 
             id="need" 
             name="need" 
-            class="form-textarea" 
+            class="form-textarea large" 
             required
-            placeholder="e.g., I need help organizing a timeline and drafting an appeal letter..."
+            placeholder="Example: I need help understanding what the policy actually says about this type of surgery, organizing the medical documentation into a coherent narrative, identifying gaps in my case that the insurer might exploit, and drafting a structured appeal that addresses their stated reasons for denial..."
           ></textarea>
         </div>
 
-        <!-- Question 3: Deadline -->
+        <!-- Question 3: Information you have -->
+        <div class="form-section">
+          <label for="documentation" class="form-label">
+            3. What information do you already have?
+          </label>
+          <span class="form-help">Documents, correspondence, data sources, key dates, relevant policies or contracts — anything that provides context or evidence.</span>
+          <textarea 
+            id="documentation" 
+            name="documentation" 
+            class="form-textarea"
+            placeholder="Example: Insurance policy (78 pages), denial letter, three emails with claims department, physician's letter of medical necessity, two relevant medical studies, my medical records from the past year..."
+          ></textarea>
+        </div>
+
+        <!-- Question 4: Gaps and Contradictions -->
+        <div class="form-section">
+          <label for="stakes" class="form-label">
+            4. What's unclear, contradictory, or missing?
+          </label>
+          <span class="form-help">Where are the gaps in information? What doesn't add up? What questions can't you answer yet?</span>
+          <textarea 
+            id="stakes" 
+            name="stakes" 
+            class="form-textarea"
+            placeholder="Example: The policy language about 'experimental procedures' is vague. The claims rep said one thing on the phone but the letter says something different. I don't know if similar cases have been won on appeal. I can't tell if I'm missing a key procedural step..."
+          ></textarea>
+        </div>
+
+        <!-- Question 5: Time Constraints -->
         <div class="form-section">
           <label for="deadline" class="form-label">
-            3. Any deadlines or time constraints?
+            5. Time constraints or deadlines
           </label>
-          <span class="form-help">E.g., "Hearing on Feb 15" or "None"</span>
+          <span class="form-help">Appeal deadlines, upcoming decisions, scheduled events, or other time-sensitive factors.</span>
           <input 
             type="text" 
             id="deadline" 
             name="deadline" 
             class="form-input"
-            placeholder="No deadline / Hearing on..."
+            placeholder="Example: Appeal must be filed within 60 days of denial (deadline: May 15, 2025)"
           />
         </div>
 
-        <!-- Question 4: Stakes -->
+        <!-- Contact Info -->
         <div class="form-section">
-          <label for="stakes" class="form-label">
-            4. What's at stake?
-          </label>
-          <span class="form-help">What's important about this? What happens if it's not resolved?</span>
-          <textarea 
-            id="stakes" 
-            name="stakes" 
-            class="form-textarea"
-            placeholder="e.g., Without coverage, I can't afford the surgery..."
-          ></textarea>
-        </div>
-
-        <!-- Question 5: Contact Info -->
-        <div class="form-section">
-          <label class="form-label">5. How can we reach you?</label>
+          <label class="form-label">6. How can we reach you?</label>
           
           <div style="margin-bottom:16px;">
             <label for="contact_name" style="font-size:0.85rem; font-weight:600; display:block; margin-bottom:6px;">
@@ -522,13 +479,13 @@
         <div class="checkbox-container">
           <input type="checkbox" id="disclaimer" name="disclaimer" required />
           <label for="disclaimer">
-            I understand this is not legal advice and that Diploria provides research and organizational assistance.
+            I understand Diploria provides research and organizational assistance, not legal advice.
           </label>
         </div>
 
         <!-- Submit Button -->
         <button type="submit" class="submit-btn" id="submitBtn">
-          Submit Intake Form
+          Submit Intake
         </button>
       </form>
     </div>
@@ -553,12 +510,12 @@
       successMessage.classList.remove('show');
       errorMessage.classList.remove('show');
 
-      // Get form data
+      // Get form data - map new field names to API expected names
       const formData = {
         situation: document.getElementById('situation').value.trim(),
         need: document.getElementById('need').value.trim(),
         deadline: document.getElementById('deadline').value.trim(),
-        stakes: document.getElementById('stakes').value.trim(),
+        stakes: document.getElementById('stakes').value.trim() + '\n\nDOCUMENTATION: ' + document.getElementById('documentation').value.trim(),
         contact_name: document.getElementById('contact_name').value.trim(),
         contact_email: document.getElementById('contact_email').value.trim(),
         contact_phone: document.getElementById('contact_phone').value.trim()
@@ -593,7 +550,7 @@
           
           // Re-enable button
           submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Submit Intake Form';
+          submitBtn.innerHTML = 'Submit Intake';
 
           // Scroll to error
           errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -605,7 +562,7 @@
         
         // Re-enable button
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Submit Intake Form';
+        submitBtn.innerHTML = 'Submit Intake';
 
         // Scroll to error
         errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
