@@ -5,57 +5,113 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Intake — Diploria</title>
   <meta name="description" content="Secure intake submission." />
+
   <style>
     :root{
-      --bg:#0b0f14;
-      --panel:#111826;
+      --bg:#070b10;
+      --panel: rgba(17,24,38,.82);
       --text:#e7eef7;
       --muted:#a9b6c7;
       --line:rgba(255,255,255,.12);
       --accent:#76d6ff;
       --radius:14px;
-      --max:900px;
+      --max:980px;
       --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.45}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(118,214,255,.10), transparent 55%),
+                  radial-gradient(900px 600px at 80% 30%, rgba(200,120,255,.08), transparent 55%),
+                  radial-gradient(1000px 700px at 50% 100%, rgba(120,255,200,.06), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
+
     .wrap{max-width:var(--max);margin:0 auto;padding:26px 16px 44px}
     .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .nav{display:flex;gap:12px;flex-wrap:wrap}
-    .card{margin-top:16px;background:rgba(17,24,38,.78);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    .brand{font-weight:900;letter-spacing:.2px}
+    .nav{display:flex;gap:14px;flex-wrap:wrap}
+
+    .card{
+      margin-top:16px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      backdrop-filter: blur(10px);
+    }
     h1{margin:10px 0 6px 0;font-size:28px;letter-spacing:-.2px}
     p{margin:8px 0;color:var(--muted)}
     .small{font-size:13px;color:var(--muted)}
     .hr{height:1px;background:var(--line);margin:16px 0}
-    label{display:block;margin-top:14px;font-weight:700}
+
+    label{display:block;margin-top:14px;font-weight:800}
     input, textarea{
-      width:100%;margin-top:6px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);
-      background:rgba(0,0,0,.18);color:var(--text);font-family:var(--font);font-size:14px;
+      width:100%;
+      margin-top:6px;
+      padding:11px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      font-family:var(--font);
+      font-size:14px;
     }
-    textarea{min-height:130px;resize:vertical}
+    textarea{min-height:120px;resize:vertical}
     .row2{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:760px){ .row2{grid-template-columns:1fr 1fr} }
+    @media(min-width:820px){ .row2{grid-template-columns:1fr 1fr} }
+
+    .check{display:flex;gap:10px;align-items:flex-start;margin-top:14px}
+    .check input{width:auto;margin-top:4px}
     .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
     button{
-      border:1px solid rgba(118,214,255,.35);background:rgba(118,214,255,.12);color:var(--text);
-      padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer
+      border:1px solid rgba(118,214,255,.35);
+      background:rgba(118,214,255,.12);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:900;
+      cursor:pointer;
     }
     button:hover{background:rgba(118,214,255,.18)}
     button.ghost{border:1px solid var(--line);background:transparent}
     button.ghost:hover{background:rgba(255,255,255,.05)}
     button:disabled{opacity:.6;cursor:not-allowed}
-    .check{display:flex;gap:10px;align-items:flex-start;margin-top:14px}
-    .check input{width:auto;margin-top:4px}
+
     .status{margin-top:12px;color:var(--muted)}
     .status.error{color:#ffb4b4}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
 
-    .modalBack{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);padding:22px;overflow:auto}
-    .modalCard{max-width:900px;margin:40px auto;background:rgba(20,25,35,.96);border:1px solid var(--line);border-radius:14px;padding:16px}
-    pre{white-space:pre-wrap;margin:0;padding:12px;background:rgba(255,255,255,.06);border-radius:12px}
+    /* Modal */
+    .modalBack{
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.62);
+      padding:22px;
+      overflow:auto;
+      z-index:9999;
+    }
+    .modalCard{
+      max-width:980px;
+      margin:40px auto;
+      background:rgba(20,25,35,.96);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+    }
+    pre{
+      white-space:pre-wrap;
+      margin:0;
+      padding:12px;
+      background:rgba(255,255,255,.06);
+      border-radius:12px
+    }
   </style>
 </head>
 
@@ -65,44 +121,44 @@
       <div class="brand">Diploria</div>
       <div class="nav">
         <a href="/index.html">Home</a>
-        <a href="mailto:reef@diploria.net">reef@diploria.net</a>
+        <a href="mailto:intake@diploria.net">intake@diploria.net</a>
       </div>
     </div>
 
     <div class="card">
-      <h1>Blank Intake</h1>
-      <p>This is a free-form intake. You will review your submission before sending.</p>
-      <p class="small">Do not include passwords, private keys, or sensitive identifiers.</p>
+      <h1>Intake</h1>
+      <p>Write plainly. You will review what you’re sending before submission.</p>
+      <p class="small">Do not include passwords, crypto seed phrases, banking logins, or private keys.</p>
 
       <div class="hr"></div>
 
       <form id="intakeForm" novalidate>
-        <label for="objective">Objective (what outcome do you want?) *</label>
-        <textarea id="objective" required></textarea>
+        <label for="objective">Objective *</label>
+        <textarea id="objective" required placeholder="What outcome do you want?"></textarea>
 
-        <label for="situation">Situation (what’s happening?) *</label>
-        <textarea id="situation" required></textarea>
+        <label for="situation">Situation *</label>
+        <textarea id="situation" required placeholder="What’s happening? Include relevant context."></textarea>
 
-        <label for="facts">Facts / inputs (what do you know, what do you have?)</label>
-        <textarea id="facts"></textarea>
+        <label for="facts">Facts / Inputs</label>
+        <textarea id="facts" placeholder="Documents, dates, links, constraints, sources, stakeholders."></textarea>
 
-        <label for="unknowns">Unknowns / conflicts (what’s unclear?)</label>
-        <textarea id="unknowns"></textarea>
+        <label for="unknowns">Unknowns / Conflicts</label>
+        <textarea id="unknowns" placeholder="What’s unclear, missing, disputed, contradictory?"></textarea>
 
-        <label for="constraints">Constraints (what must be respected?)</label>
-        <textarea id="constraints"></textarea>
+        <label for="constraints">Constraints</label>
+        <textarea id="constraints" placeholder="Time, budget, legal/privacy, tone, tools, boundaries."></textarea>
 
-        <label for="requested_output">Requested output (what do you want back?) *</label>
-        <textarea id="requested_output" required></textarea>
+        <label for="requested_output">Requested Output *</label>
+        <textarea id="requested_output" required placeholder="What deliverable do you want back?"></textarea>
 
         <div class="row2">
           <div>
             <label for="deadline">Deadline / urgency</label>
-            <input id="deadline" />
+            <input id="deadline" placeholder='e.g., "today", "this week", "none"' />
           </div>
           <div>
             <label for="stake">What’s at stake</label>
-            <input id="stake" />
+            <input id="stake" placeholder="What happens if this goes wrong?" />
           </div>
         </div>
 
@@ -120,12 +176,12 @@
         </div>
 
         <label for="phone">Phone (optional)</label>
-        <input id="phone" />
+        <input id="phone" type="tel" />
 
         <div class="check">
           <input id="agree" type="checkbox" />
-          <label for="agree" style="margin:0;font-weight:700">
-            I understand this is not legal advice.
+          <label for="agree" style="margin:0;font-weight:800">
+            I understand this is not legal advice and I am submitting information at my own discretion.
           </label>
         </div>
 
@@ -151,7 +207,7 @@
       </div>
 
       <p class="small" style="margin-top:10px;">
-        Privacy: email/phone are not shown in this preview, but they will be included in the submission.
+        Privacy note: email and phone are not shown in this preview, but they are included in the submission to generate your receipt and notify us.
       </p>
     </div>
   </div>
@@ -168,9 +224,8 @@
   const form = document.getElementById("intakeForm");
 
   function v(id){ return (document.getElementById(id).value || "").trim(); }
-
-  function setStatus(msg, isError=false){
-    status.classList.toggle("error", !!isError);
+  function setStatus(msg, isError){
+    status.className = "status" + (isError ? " error" : "");
     status.textContent = msg || "";
   }
 
@@ -195,12 +250,10 @@
       return "Please complete name, email, objective, situation, and requested output.";
     }
     if(!document.getElementById("agree").checked){
-      return "Please confirm the disclaimer checkbox.";
+      return "Please confirm the checkbox before submitting.";
     }
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
-    if(!emailOk){
-      return "Please enter a valid email address.";
-    }
+    if(!emailOk) return "Please enter a valid email address.";
     return null;
   }
 
@@ -208,30 +261,30 @@
     reviewBox.textContent =
       "Objective:\n" + d.objective + "\n\n" +
       "Situation:\n" + d.situation + "\n\n" +
-      (d.facts ? "Facts / inputs:\n" + d.facts + "\n\n" : "") +
-      (d.unknowns ? "Unknowns / conflicts:\n" + d.unknowns + "\n\n" : "") +
+      (d.facts ? "Facts / Inputs:\n" + d.facts + "\n\n" : "") +
+      (d.unknowns ? "Unknowns / Conflicts:\n" + d.unknowns + "\n\n" : "") +
       (d.constraints ? "Constraints:\n" + d.constraints + "\n\n" : "") +
-      "Requested output:\n" + d.requested_output + "\n\n" +
-      (d.deadline ? "Deadline / urgency:\n" + d.deadline + "\n\n" : "") +
+      "Requested Output:\n" + d.requested_output + "\n\n" +
+      (d.deadline ? "Deadline:\n" + d.deadline + "\n\n" : "") +
       (d.stake ? "What’s at stake:\n" + d.stake + "\n\n" : "") +
       "\n(Email/phone hidden in preview.)";
     modal.style.display = "block";
   }
-
   function closeModal(){ modal.style.display = "none"; }
 
   async function submitToWorker(d){
-    setStatus("Submitting...");
+    setStatus("Submitting...", false);
+
     const res = await fetch("/api/intake", {
       method: "POST",
-      headers: { "Content-Type":"application/json" },
+      headers: {"Content-Type":"application/json"},
       body: JSON.stringify(d)
     });
 
     let out = {};
-    try { out = await res.json(); } catch (e) {}
+    try { out = await res.json(); } catch(e) {}
 
-    // Support multiple Worker response shapes
+    // Accept either {ok:true,...} or {success:true,...}
     const ok = !!(out.ok || out.success);
     const caseId = out.caseId || out.id || out.case_id;
 
@@ -250,7 +303,7 @@
   }
 
   btnReview.addEventListener("click", () => {
-    setStatus("");
+    setStatus("", false);
     const d = getData();
     const err = validate(d);
     if(err){ setStatus(err, true); return; }
@@ -259,7 +312,7 @@
 
   btnClear.addEventListener("click", () => {
     form.reset();
-    setStatus("");
+    setStatus("", false);
   });
 
   btnEdit.addEventListener("click", () => closeModal());
@@ -285,6 +338,5 @@
   });
 })();
 </script>
-
 </body>
 </html>
