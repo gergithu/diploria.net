@@ -2,149 +2,287 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Intake — Diploria</title>
-  <meta name="description" content="Structured intake for complex situations. Get clarity: timelines, constraints, risks, options, and next moves." />
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diploria</title>
+  <meta name="description" content="Diploria.net — clarity you can use." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #131313;
+      --muted: #5a5a5a;
+      --line: rgba(0,0,0,0.10);
+      --accent: #c46b3a;
+      --accent-soft: rgba(196,107,58,0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      background: #eaeaea;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Coral background layer - full opacity */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("images/brain-coral.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: saturate(1.15) contrast(1.08) brightness(1.15);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Strong overlay to make coral very opaque/faded */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.70) 0%,
+        rgba(255,255,255,0.75) 50%,
+        rgba(255,255,255,0.70) 100%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      /* NO background - text sits on coral */
+      padding: 44px 44px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .mark {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 62px;
+      height: 62px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(0,0,0,0.08);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+    }
+
+    .mark img {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+
+    h1 {
+      margin: 18px 0 6px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: clamp(34px, 4.2vw, 44px);
+      line-height: 1.05;
+      text-shadow: 0 1px 3px rgba(255,255,255,0.9);
+    }
+
+    .tagline {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .lead {
+      margin: 0 auto 18px;
+      max-width: 520px;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #202020;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .lead b {
+      font-weight: 800;
+    }
+
+    .lead .accent {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .note {
+      margin: 18px auto 26px;
+      max-width: 560px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-left: 3px solid rgba(196,107,58,0.65);
+      padding: 14px 16px;
+      border-radius: 12px;
+      color: #2c2c2c;
+      font-size: 13.5px;
+      line-height: 1.55;
+      font-style: italic;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.12);
+      margin: 26px 0;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6a6a6a;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(196,107,58,0.40);
+      background: rgba(255,255,255,0.93);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .pill:hover {
+      background: rgba(255,255,255,0.98);
+      border-color: rgba(196,107,58,0.65);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .pill svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .or-divider {
+      margin: 14px 0 10px;
+      color: #6a6a6a;
+      font-size: 13px;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .research {
+      margin: 0;
+      color: #3a3a3a;
+      line-height: 1.65;
+      font-size: 14px;
+      font-style: normal;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    .fine {
+      margin-top: 16px;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+      font-style: normal;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 560px) {
+      .wrap { padding: 44px 16px 64px; }
+      .card { padding: 38px 22px 34px; }
+      .note { padding: 12px 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Diploria</h1>
+  <main class="wrap">
+    <section class="card" role="region" aria-label="Diploria landing">
+      <div class="mark" aria-hidden="true">
+        <img src="images/brain-coral.jpeg" alt="" />
       </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="/">Home</a>
-        <a href="mailto:reef@diploria.net">Contact</a>
-      </nav>
-    </header>
 
-    <main class="hero">
-      <div class="kicker">Guided intake</div>
-      <h2>Start with structure.</h2>
-      <p>
-        This form is designed to produce a high-signal summary: what’s happening, what’s known, what’s unclear,
-        what’s at stake, and what you need next. Takes about 5 minutes.
+      <h1>Diploria</h1>
+      <p class="tagline">Clarity you can use</p>
+
+      <p class="lead">
+        Diploria.net isn't going away — it's <span class="accent">establishing more polyps</span>.
+        Like a healthy reef, we're growing new structures, strengthening connections, and building something more resilient.
       </p>
 
-      <div id="statusSuccess" class="notice ok" style="display:none">
-        Submission received. You’ll get a confirmation email. If it’s a fit, you’ll receive a proposed next step or scope.
+      <div class="note">
+        🪸 Yes, you noticed! Diploria is a genus of brain coral. Just like coral polyps work together to build complex reef systems,
+        this site brings structure and clarity to complicated situations. We're taking a moment to expand the reef.
       </div>
 
-      <div id="statusError" class="notice danger" style="display:none">
-        Submission error. Please try again, or email reef@diploria.net.
-      </div>
+      <hr />
 
-      <div class="grid" style="margin-top:18px">
-        <section class="card">
-          <h3>Examples of strong intake responses</h3>
+      <p class="section-title">Questions or comments?</p>
+      <a class="pill" href="mailto:reef@diploria.net">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M4 6.5C4 5.67157 4.67157 5 5.5 5H18.5C19.3284 5 20 5.67157 20 6.5V17.5C20 18.3284 19.3284 19 18.5 19H5.5C4.67157 19 4 18.3284 4 17.5V6.5Z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M5.5 6.5L12 12L18.5 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        reef@diploria.net
+      </a>
 
-          <p class="small">Example 1 – Legal / Institutional</p>
-          <p class="small">I need a clear timeline and contradiction analysis across notes, disclosure, and records to support a motion. Trial dates are set. I need to know what matters, what doesn’t, and where the leverage is.</p>
+      <p class="or-divider">or</p>
 
-          <p class="small">Example 2 – Strategic Decision</p>
-          <p class="small">I’m choosing between two paths with irreversible consequences. I need a structured decision framework that maps risks, second-order effects, and what I should delay versus decide now.</p>
+      <a class="pill" href="/intake.html">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 5v14m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Submit an intake form
+      </a>
 
-          <p class="small">Example 3 – Research & Synthesis</p>
-          <p class="small">I have fragmented information from multiple sources. I need a concise brief that separates facts from assumptions and identifies what would materially change the outcome.</p>
+      <hr />
 
-          <p class="small">Example 4 – Communication Under Pressure</p>
-          <p class="small">I need to draft communication to an institution where wording matters and missteps have consequences. I want something precise, restrained, and defensible.</p>
+      <p class="section-title">Research notes</p>
+      <p class="research">"Can anyone see the deployment of diploria.net prior to studying the need for Kubernetes?"</p>
 
-          <p class="small">Example 5 – Personal + Financial Complexity</p>
-          <p class="small">I’m navigating family, legal, and financial constraints simultaneously. I need an external, structured view of options and trade-offs without emotional noise.</p>
-        </section>
-
-        <section class="card">
-          <h3>How to fill this out</h3>
-          <p class="small">Answer plainly and concretely. Bullet points are welcome. Precision beats polish.</p>
-          <ul>
-            <li>Context: what is happening, who is involved</li>
-            <li>What you know: facts, documents, dates, sources</li>
-            <li>What’s unclear: contradictions, gaps, missing info</li>
-            <li>Objective: what decision or outcome you want</li>
-            <li>Constraints: deadlines, money, legal limits, reputational risk</li>
-          </ul>
-
-          <div class="hr"></div>
-
-          <h3>What to expect</h3>
-          <p class="small">
-            Submissions are reviewed manually. If it’s a fit, you’ll receive a proposed next step or scope.
-            If it’s not a fit, you’ll be told quickly and directly. No ghosting. No filler.
-          </p>
-          <p class="small">Diploria provides research and organizational assistance. It does not provide legal advice.</p>
-        </section>
-      </div>
-
-      <div class="formWrap">
-        <form id="intakeForm" method="post">
-          <label for="context">1) Context (what’s happening, who’s involved) *</label>
-          <textarea id="context" name="context" required placeholder="Plain-language summary. Names/titles are fine. Bullet points welcome."></textarea>
-          <div class="help">Include only what a neutral third party needs to understand the situation.</div>
-
-          <label for="known">2) What you know (facts, dates, documents, sources) *</label>
-          <textarea id="known" name="known" required placeholder="Key dates. Key documents. What you can support."></textarea>
-
-          <label for="unclear">3) What’s unclear or conflicting</label>
-          <textarea id="unclear" name="unclear" placeholder="Contradictions, missing info, unanswered questions."></textarea>
-
-          <div class="row2">
-            <div>
-              <label for="deadline">4) Deadlines / time constraints</label>
-              <input id="deadline" name="deadline" type="text" placeholder='e.g., "Hearing Feb 15" or "None"' />
-            </div>
-            <div>
-              <label for="stake">5) What’s at stake</label>
-              <input id="stake" name="stake" type="text" placeholder="What happens if this isn’t resolved?" />
-            </div>
-          </div>
-
-          <label for="help">6) What do you need help with? *</label>
-          <textarea id="help" name="help" required placeholder="Be specific: timeline, risk map, drafting, brief, options, etc."></textarea>
-
-          <div class="hr"></div>
-
-          <label for="name">Your name *</label>
-          <input id="name" name="name" required />
-
-          <div class="row2">
-            <div>
-              <label for="email">Email *</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-            <div>
-              <label for="phone">Phone (optional)</label>
-              <input id="phone" name="phone" type="tel" />
-            </div>
-          </div>
-
-          <div class="checkboxRow">
-            <input id="disclaimer" name="disclaimer" type="checkbox" required />
-            <label for="disclaimer" style="margin:0;font-weight:600">
-              I understand Diploria provides research and organizational assistance and does not provide legal advice.
-            </label>
-          </div>
-
-          <div class="ctaRow" style="margin-top:16px">
-            <button class="btn btnPrimary" type="submit">Submit intake</button>
-            <a class="btn btnGhost" href="mailto:reef@diploria.net">Email instead</a>
-          </div>
-
-          <p class="small" style="margin-top:12px">
-            Prefer email? Send a plain summary to reef@diploria.net and include “Intake” in the subject.
-          </p>
-        </form>
-      </div>
-
-      <div class="footer">
-        <div class="small"><a href="/">← Back to home</a></div>
-        <div class="small">Questions: <a href="mailto:reef@diploria.net">reef@diploria.net</a></div>
-      </div>
-    </main>
-  </div>
-
-  <script src="/assets/intake.js"></script>
+      <p class="fine">
+        Built and hosted securely — this is the "lights on" landing page while the full site is being built.<br />
+        More pages, tools, and writing are coming online steadily.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
