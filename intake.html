@@ -18,91 +18,44 @@
       --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--font);
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.45;
-    }
-    a{color:var(--accent); text-decoration:none}
+    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.45}
+    a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:26px 16px 44px}
-    .top{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .brand{font-weight:800}
-    .nav{display:flex; gap:12px; flex-wrap:wrap}
-    .card{
-      margin-top:16px;
-      background:rgba(17,24,38,.78);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-    }
-    h1{margin:10px 0 6px 0; font-size:28px}
-    p{margin:8px 0; color:var(--muted)}
-    .small{font-size:13px; color:var(--muted)}
-    .hr{height:1px; background:var(--line); margin:16px 0}
-    label{display:block; margin-top:14px; font-weight:700}
+    .wrap{max-width:var(--max);margin:0 auto;padding:26px 16px 44px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .nav{display:flex;gap:12px;flex-wrap:wrap}
+    .card{margin-top:16px;background:rgba(17,24,38,.78);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    h1{margin:10px 0 6px 0;font-size:28px;letter-spacing:-.2px}
+    p{margin:8px 0;color:var(--muted)}
+    .small{font-size:13px;color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:16px 0}
+    label{display:block;margin-top:14px;font-weight:700}
     input, textarea{
-      width:100%;
-      margin-top:6px;
-      padding:11px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.18);
-      color:var(--text);
-      font-family:var(--font);
-      font-size:14px;
+      width:100%;margin-top:6px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);
+      background:rgba(0,0,0,.18);color:var(--text);font-family:var(--font);font-size:14px;
     }
-    textarea{min-height:130px; resize:vertical}
-    .row2{display:grid; grid-template-columns:1fr; gap:12px}
-    @media(min-width:760px){
-      .row2{grid-template-columns:1fr 1fr}
-    }
-    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    textarea{min-height:130px;resize:vertical}
+    .row2{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:760px){ .row2{grid-template-columns:1fr 1fr} }
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     button{
-      border:1px solid rgba(118,214,255,.35);
-      background:rgba(118,214,255,.12);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:12px;
-      font-weight:800;
-      cursor:pointer;
+      border:1px solid rgba(118,214,255,.35);background:rgba(118,214,255,.12);color:var(--text);
+      padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer
     }
     button:hover{background:rgba(118,214,255,.18)}
-    button.ghost{
-      border:1px solid var(--line);
-      background:transparent;
-    }
+    button.ghost{border:1px solid var(--line);background:transparent}
     button.ghost:hover{background:rgba(255,255,255,.05)}
-    .check{display:flex; gap:10px; align-items:flex-start; margin-top:14px}
-    .check input{width:auto; margin-top:4px}
-    .status{margin-top:12px; color:var(--muted)}
-    .mono{font-family:ui-monospace, Menlo, Consolas, monospace}
+    button:disabled{opacity:.6;cursor:not-allowed}
+    .check{display:flex;gap:10px;align-items:flex-start;margin-top:14px}
+    .check input{width:auto;margin-top:4px}
+    .status{margin-top:12px;color:var(--muted)}
+    .status.error{color:#ffb4b4}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;}
 
-    .modalBack{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.62);
-      padding:22px;
-      overflow:auto;
-    }
-    .modalCard{
-      max-width:900px;
-      margin:40px auto;
-      background:rgba(20,25,35,.96);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:16px;
-    }
-    pre{
-      white-space:pre-wrap;
-      margin:0;
-      padding:12px;
-      background:rgba(255,255,255,.06);
-      border-radius:12px;
-    }
+    .modalBack{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);padding:22px;overflow:auto}
+    .modalCard{max-width:900px;margin:40px auto;background:rgba(20,25,35,.96);border:1px solid var(--line);border-radius:14px;padding:16px}
+    pre{white-space:pre-wrap;margin:0;padding:12px;background:rgba(255,255,255,.06);border-radius:12px}
   </style>
 </head>
 
@@ -119,35 +72,36 @@
     <div class="card">
       <h1>Blank Intake</h1>
       <p>This is a free-form intake. You will review your submission before sending.</p>
+      <p class="small">Do not include passwords, private keys, or sensitive identifiers.</p>
 
       <div class="hr"></div>
 
-      <form id="intakeForm">
-        <label>Objective *</label>
+      <form id="intakeForm" novalidate>
+        <label for="objective">Objective (what outcome do you want?) *</label>
         <textarea id="objective" required></textarea>
 
-        <label>Situation *</label>
+        <label for="situation">Situation (what’s happening?) *</label>
         <textarea id="situation" required></textarea>
 
-        <label>Facts / inputs</label>
+        <label for="facts">Facts / inputs (what do you know, what do you have?)</label>
         <textarea id="facts"></textarea>
 
-        <label>Unknowns / conflicts</label>
+        <label for="unknowns">Unknowns / conflicts (what’s unclear?)</label>
         <textarea id="unknowns"></textarea>
 
-        <label>Constraints</label>
+        <label for="constraints">Constraints (what must be respected?)</label>
         <textarea id="constraints"></textarea>
 
-        <label>Requested output *</label>
+        <label for="requested_output">Requested output (what do you want back?) *</label>
         <textarea id="requested_output" required></textarea>
 
         <div class="row2">
           <div>
-            <label>Deadline</label>
+            <label for="deadline">Deadline / urgency</label>
             <input id="deadline" />
           </div>
           <div>
-            <label>What’s at stake</label>
+            <label for="stake">What’s at stake</label>
             <input id="stake" />
           </div>
         </div>
@@ -156,25 +110,28 @@
 
         <div class="row2">
           <div>
-            <label>Name *</label>
+            <label for="name">Name *</label>
             <input id="name" required />
           </div>
           <div>
-            <label>Email *</label>
+            <label for="email">Email *</label>
             <input id="email" type="email" required />
           </div>
         </div>
 
-        <label>Phone (optional)</label>
+        <label for="phone">Phone (optional)</label>
         <input id="phone" />
 
         <div class="check">
-          <input id="agree" type="checkbox" required />
-          <label>I understand this is not legal advice.</label>
+          <input id="agree" type="checkbox" />
+          <label for="agree" style="margin:0;font-weight:700">
+            I understand this is not legal advice.
+          </label>
         </div>
 
         <div class="btns">
-          <button type="submit">Review submission</button>
+          <button type="button" id="reviewBtn">Review submission</button>
+          <button type="button" class="ghost" id="clearBtn">Clear</button>
         </div>
 
         <div id="status" class="status"></div>
@@ -182,77 +139,152 @@
     </div>
   </div>
 
-  <div id="reviewModal" class="modalBack">
+  <div id="reviewModal" class="modalBack" role="dialog" aria-modal="true">
     <div class="modalCard">
-      <h2>Review before submitting</h2>
+      <h2 style="margin:0 0 10px 0;">Review before submitting</h2>
+      <p class="small">Confirm what will be sent. You can go back and edit.</p>
       <pre id="reviewContent"></pre>
-      <div class="btns">
-        <button class="ghost" id="btnEdit">Edit</button>
-        <button id="btnConfirm">Confirm & submit</button>
+
+      <div class="btns" style="margin-top:14px;">
+        <button type="button" class="ghost" id="btnEdit">Edit</button>
+        <button type="button" id="btnConfirm">Confirm & submit</button>
       </div>
+
+      <p class="small" style="margin-top:10px;">
+        Privacy: email/phone are not shown in this preview, but they will be included in the submission.
+      </p>
     </div>
   </div>
 
 <script>
 (function(){
-  const form = document.getElementById("intakeForm");
   const modal = document.getElementById("reviewModal");
   const reviewBox = document.getElementById("reviewContent");
   const btnEdit = document.getElementById("btnEdit");
   const btnConfirm = document.getElementById("btnConfirm");
+  const btnReview = document.getElementById("reviewBtn");
+  const btnClear = document.getElementById("clearBtn");
   const status = document.getElementById("status");
+  const form = document.getElementById("intakeForm");
 
-  const v = id => document.getElementById(id).value.trim();
+  function v(id){ return (document.getElementById(id).value || "").trim(); }
+
+  function setStatus(msg, isError=false){
+    status.classList.toggle("error", !!isError);
+    status.textContent = msg || "";
+  }
 
   function getData(){
     return {
-      name:v("name"),
-      email:v("email"),
-      phone:v("phone"),
-      objective:v("objective"),
-      situation:v("situation"),
-      facts:v("facts"),
-      unknowns:v("unknowns"),
-      constraints:v("constraints"),
-      requested_output:v("requested_output"),
-      deadline:v("deadline"),
-      stake:v("stake")
+      name: v("name"),
+      email: v("email"),
+      phone: v("phone"),
+      objective: v("objective"),
+      situation: v("situation"),
+      facts: v("facts"),
+      unknowns: v("unknowns"),
+      constraints: v("constraints"),
+      requested_output: v("requested_output"),
+      deadline: v("deadline"),
+      stake: v("stake")
     };
   }
 
-  function openModal(d){
-    reviewBox.textContent = JSON.stringify(d, null, 2);
-    modal.style.display="block";
-  }
-  function closeModal(){ modal.style.display="none"; }
-
-  form.addEventListener("submit", e=>{
-    e.preventDefault();
-    const d = getData();
-    if(!document.getElementById("agree").checked){
-      status.textContent="Please confirm disclaimer.";
-      return;
+  function validate(d){
+    if(!d.name || !d.email || !d.objective || !d.situation || !d.requested_output){
+      return "Please complete name, email, objective, situation, and requested output.";
     }
+    if(!document.getElementById("agree").checked){
+      return "Please confirm the disclaimer checkbox.";
+    }
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+    if(!emailOk){
+      return "Please enter a valid email address.";
+    }
+    return null;
+  }
+
+  function openModal(d){
+    reviewBox.textContent =
+      "Objective:\n" + d.objective + "\n\n" +
+      "Situation:\n" + d.situation + "\n\n" +
+      (d.facts ? "Facts / inputs:\n" + d.facts + "\n\n" : "") +
+      (d.unknowns ? "Unknowns / conflicts:\n" + d.unknowns + "\n\n" : "") +
+      (d.constraints ? "Constraints:\n" + d.constraints + "\n\n" : "") +
+      "Requested output:\n" + d.requested_output + "\n\n" +
+      (d.deadline ? "Deadline / urgency:\n" + d.deadline + "\n\n" : "") +
+      (d.stake ? "What’s at stake:\n" + d.stake + "\n\n" : "") +
+      "\n(Email/phone hidden in preview.)";
+    modal.style.display = "block";
+  }
+
+  function closeModal(){ modal.style.display = "none"; }
+
+  async function submitToWorker(d){
+    setStatus("Submitting...");
+    const res = await fetch("/api/intake", {
+      method: "POST",
+      headers: { "Content-Type":"application/json" },
+      body: JSON.stringify(d)
+    });
+
+    let out = {};
+    try { out = await res.json(); } catch (e) {}
+
+    // Support multiple Worker response shapes
+    const ok = !!(out.ok || out.success);
+    const caseId = out.caseId || out.id || out.case_id;
+
+    if(!res.ok || !ok){
+      const msg = out.error || out.message || ("HTTP " + res.status);
+      throw new Error(msg);
+    }
+
+    if(caseId){
+      setStatus("Submitted. Case ID: " + caseId, false);
+    } else {
+      setStatus("Submitted.", false);
+    }
+
+    form.reset();
+  }
+
+  btnReview.addEventListener("click", () => {
+    setStatus("");
+    const d = getData();
+    const err = validate(d);
+    if(err){ setStatus(err, true); return; }
     openModal(d);
   });
 
-  btnEdit.onclick = closeModal;
+  btnClear.addEventListener("click", () => {
+    form.reset();
+    setStatus("");
+  });
 
-  btnConfirm.onclick = async ()=>{
-    status.textContent="Submitting...";
+  btnEdit.addEventListener("click", () => closeModal());
+
+  btnConfirm.addEventListener("click", async () => {
     try{
-      const res = await fetch("/api/intake",{
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body:JSON.stringify(getData())
-      });
-      const out = await res.json();
-      if(!out.ok) throw out.error;
-      status.textContent="Submitted. Case ID: "+out.caseId;
-      form.reset();
-    }catch(err){
-      status.textContent="Submission failed.";
+      btnConfirm.disabled = true;
+      const d = getData();
+      const err = validate(d);
+      if(err){ setStatus(err, true); closeModal(); return; }
+      await submitToWorker(d);
+      closeModal();
+    } catch(ex){
+      setStatus(ex.message || "Submission failed.", true);
+      closeModal();
+    } finally {
+      btnConfirm.disabled = false;
     }
-    closeModal();
-  };
+  });
 
+  modal.addEventListener("click", (e) => {
+    if(e.target === modal) closeModal();
+  });
+})();
+</script>
+
+</body>
+</html>
